@@ -27,7 +27,7 @@ a:link {
   color: black;
 }
 
-p {
+.content-layout p {
   margin-top: 30px;
   font-size: 21px;
   font-family: Georgia, serif;
@@ -46,6 +46,39 @@ p {
 }
 
 .article-listitem {
-  padding: 10px;
+  padding: 15px;
   margin-bottom: 20px;
+}
+
+.article-listitem-author {
+  color: rgba(0,0,0,.5);
+}
+
+.article-listitem-panel {
+  margin-top: 20px;
+}
+
+.article-listitem-views {
+  color: rgba(0,0,0, .5);
+}
+
+.button-love {
+  display: inline-block;
+  position: relative;
+  padding: 0;
+  background: rgba(0, 0, 0, 0);
+  margin-right: 4px;
+  border: none;
+  outline: none;
+}
+
+.button-love-text {
+  color: rgba(0,0,0,.3);
+  display: inline-block;
+  position: relative;
+  background: rgba(0, 0, 0, 0);
+  border: none;
+  outline: none;
+  pointer-events: none;
+  padding: 0;
 }

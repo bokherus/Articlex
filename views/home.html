@@ -1,15 +1,26 @@
 <div class="main">
-  <div class="container" ng-repeat="article in articles"
-  ng-init="$last ? NProgress.end() : angular.noop()">
-    <div class="article-listitem well col-md-10 col-sm-10">
-      <a href="#/articles/{{$index}}">
-      <div ng-style="{'background-image':'url({{article.url}})'}" style="height: 200px"></div>
+    <div class="container" ng-repeat="article in articles" ng-init="$last ? NProgress.end() : angular.noop()">
+        <div class="article-listitem well col-md-10 col-sm-10">
+            <!-- SHOW ARTICLE PUBLISHED DATE/TIME -->
+            <!--<p>{{ article.pubdate | date : 'MMM d'}}</p> -->
+            <a href="#/articles/{{$index}}">
+                <div ng-style="{'background-image':'url({{article.url}})'}" style="height: 200px"></div>
 
-        <!-- <figure class="article-image">
-          <img ng-src="{{ article.url }}">
-        </figure> -->
-        <h2>{{ article.title }}</h2>
-        <h5>by {{ article.author }}</h5>
-    </a>
-  </div>
-  </div>
+                <h2 class="article-listitem-title">{{ article.title }}</h2>
+                <h5 class="article-listitem-author">by {{ article.author }}</h5>
+            </a>
+            <div class="row article-listitem-panel">
+                <div class="col-md-10">
+                    <button class="button-love">
+                        <!-- <i class="fa fa-heart-o fa-lg" aria-hidden="true"></i> -->
+                        <i class="fa fa-heart fa-lg" aria-hidden="true"></i>
+                    </button>
+                    <button class="button-love-text">{{ article.upvotes }}</button>
+                </div>
+                <div class="col-md-2">
+                    <p class="article-listitem-views">{{ article.views }} views</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
