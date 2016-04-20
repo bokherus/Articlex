@@ -1,6 +1,5 @@
 var Schema = require('./js_backend/Schema');
 var DbEditor = require('./js_backend/DbManipulator.js');
-var ApiCalls = require('./js_backend/ApiCalls');
 
 var bcrypt = require('bcrypt-nodejs');
 

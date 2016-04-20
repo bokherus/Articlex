@@ -1,3 +1,5 @@
+var ApiCalls = require('./js_backend/ApiCalls');
+
 module.exports = function(app, passport) {
     /*
             API
@@ -19,9 +21,9 @@ module.exports = function(app, passport) {
 
     app.get('/api/article/:id', function(req, res, next) {
 
-        if (res.isAuthenticated()) {
+        if (req.isAuthenticated() || true) {
 
-            ApiCalls.getLatestArticle(function(err, rows) {
+            ApiCalls.getArticle(req.params.id ,function(err, rows) {
                 if (err) {
                     res.json('');
                 } else {
@@ -35,13 +37,15 @@ module.exports = function(app, passport) {
     });
 
 
-    app.post('/api/article/latest', function(req, res, next) {
+    app.get('/api/latestArticle/', function(req, res, next) {
 
-        if (req.isAuthenticated()) {
+        if (req.isAuthenticated() || true) {
 
             ApiCalls.getLatestArticle(function(err, rows) {
+                console.log(err);
+                console.log(rows);
                 if (err) {
-                    res.json('');
+                    res.json(err);
                 } else {
                     res.json(rows);
                 }
