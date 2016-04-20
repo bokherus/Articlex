@@ -1,88 +1,40 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Articlex</title>
-  <style>
-    body {
-      -webkit-font-smoothing: antialiased;
-    }
-    h1 {
-      padding-top: 10px;
-      padding-bottom: 10px;
-      font-family: "Lucida Grande",Arial,sans-serif;
-      font-weight: 700;
-      font-style: normal;
-      font-size: 36px;
-    }
-
-    p {
-      font-size: 21px;
-      font-family: Georgia,"Times New Roman",Times,serif;
-      font-weight: 400;
-      line-height: 1.58;
-      letter-spacing: -.003em;
-    }
-
-    .content-layout {
-      width: 700px;
-      margin: 0 auto;
-    }
-
-  </style>
-
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-  <script src="https://cdn.tinymce.com/4/tinymce.min.js"></script>
-  <script type="text/javascript">
-    tinymce.init({
-      selector: '#myeditablediv',
-      menubar: false,
-      statusbar: false,
-      plugin: 'image spellchecker',
-      toolbar: 'undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist | link image',
-      width: 600,
-      height: 800
-    });
+  <meta charset="UTF-8">
+  <title>Angular test</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="node_modules/nprogress/nprogress.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.min.js">
   </script>
+  <script src="https://code.angularjs.org/1.2.28/angular-route.min.js"></script>
 </head>
-
-<body>
-
-    <img class="img-responsive" src="images/guitar.jpg">
-
-    <div class="content-layout">
-      <h1>Learn guitar the hard way</h1>
-
-
-      <!-- <form method="post">
-        <div id="myeditablediv">Click here to edit!</div>
-      </form> -->
-
-  <p>Over fact all son tell this any his. No insisted confined of weddings to returned to debating rendered. Keeps order fully so do party means young. Table nay him jokes quick. In felicity up to graceful mistaken horrible consider. Abode never think to at. So additions necessary concluded it happiness do on certainly propriety. On in green taken do offer witty of.</p>
-
-  <p>Months on ye at by esteem desire warmth former. Sure that that way gave any fond now. His boy middleton sir nor engrossed affection excellent. Dissimilar compliment cultivated preference eat sufficient may. Well next door soon we mr he four. Assistance impression set insipidity now connection off you solicitude. Under as seems we me stuff those style at. Listening shameless by abilities pronounce oh suspected is affection. Next it draw in draw much bred.</p>
-
-  <p>Little afraid its eat looked now. Very ye lady girl them good me make. It hardly cousin me always. An shortly village is raising we shewing replied. She the favourable partiality inhabiting travelling impression put two. His six are entreaties instrument acceptance unsatiable her. Amongst as or on herself chapter entered carried no. Sold old ten are quit lose deal his sent. You correct how sex several far distant believe journey parties. We shyness enquire uncivil affixed it carried to.</p>
-
-  <p>Agreed joy vanity regret met may ladies oppose who. Mile fail as left as hard eyes. Meet made call in mean four year it to. Prospect so branched wondered sensible of up. For gay consisted resolving pronounce sportsman saw discovery not. Northward or household as conveying we earnestly believing. No in up contrasted discretion inhabiting excellence. Entreaties we collecting unpleasant at everything conviction.</p>
-
-  <p>Death weeks early had their and folly timed put. Hearted forbade on an village ye in fifteen. Age attended betrayed her man raptures laughter. Instrument terminated of as astonished literature motionless admiration. The affection are determine how performed intention discourse but. On merits on so valley indeed assure of. Has add particular boisterous uncommonly are. Early wrong as so manor match. Him necessary shameless discovery consulted one but.</p>
-
-  <p>Her old collecting she considered discovered. So at parties he warrant oh staying. Square new horses and put better end. Sincerity collected happiness do is contented. Sigh ever way now many. Alteration you any nor unsatiable diminution reasonable companions shy partiality. Leaf by left deal mile oh if easy. Added woman first get led joy not early jokes.</p>
-
-  <p>Whole every miles as tiled at seven or. Wished he entire esteem mr oh by. Possible bed you pleasure civility boy elegance ham. He prevent request by if in pleased. Picture too and concern has was comfort. Ten difficult resembled eagerness nor. Same park bore on be. Warmth his law design say are person. Pronounce suspected in belonging conveying ye repulsive.</p>
-
-  <p>Particular unaffected projection sentiments no my. Music marry as at cause party worth weeks. Saw how marianne graceful dissuade new outlived prospect followed. Uneasy no settle whence nature narrow in afraid. At could merit by keeps child. While dried maids on he of linen in.</p>
-
-  <p>Ever man are put down his very. And marry may table him avoid. Hard sell it were into it upon. He forbade affixed parties of assured to me windows. Happiness him nor she disposing provision. Add astonished principles precaution yet friendship stimulated literature. State thing might stand one his plate. Offending or extremity therefore so difficult he on provision. Tended depart turned not are.</p>
-
+<body ng-app="myApp">
+  <nav class="navbar navbar-default">
+    <div class="container-fluid col-md-4">
+      <a class="navbar-brand" href="#/">Articlex</a>
+      <ul class="nav navbar-nav">
+        <li><a href="#/">Trending</a></li>
+        <li><a href="#/">Recommend for you</a></li>
+        <li><a href="#/">Tags</a></li>
+      </ul>
+    </div>
+    <div class="container">
 
     </div>
+  </nav>
+
+  <div ng-view></div>
 
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/controllers/MainController.js"></script>
+  <script src="js/controllers/ArticleController.js"></script>
+  <script src="js/services/articles.js"></script>
+  <script src="node_modules/nprogress/nprogress.js"></script>
 </body>
-
 </html>
