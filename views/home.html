@@ -1,15 +1,15 @@
 <div class="main">
-  <div>
-  <ul class="nav nav-tabs nav-justified">
+  <div class="container">
+  <ul class="nav nav-tabs col-md-8 col-sm-8">
     <li><a href="#/">Trending</a></li>
     <li><a href="#/">Recommend for you</a></li>
     <li><a href="#/">Tags</a></li>
   </ul>
 </div>
     <div class="container article-feed" ng-repeat="article in articles" ng-init="$last ? NProgress.end() : angular.noop()">
-        <div class="article-listitem well col-md-10 col-sm-10">
+        <div class="article-listitem panel panel-default col-md-8 col-sm-8">
             <!-- SHOW ARTICLE PUBLISHED DATE/TIME -->
-            <!--<p>{{ article.pubdate | date : 'MMM d'}}</p> -->
+            <p>{{ article.pubdate | date : 'MMM d'}}</p>
             <a href="#/articles/{{$index}}">
                 <div ng-style="{'background-image':'url({{article.url}})'}"
                 style="height: 200px">
