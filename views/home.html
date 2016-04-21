@@ -4,7 +4,10 @@
             <!-- SHOW ARTICLE PUBLISHED DATE/TIME -->
             <!--<p>{{ article.pubdate | date : 'MMM d'}}</p> -->
             <a href="#/articles/{{$index}}">
-                <div ng-style="{'background-image':'url({{article.url}})'}" style="height: 200px"></div>
+                <div ng-style="{'background-image':'url({{article.url}})'}"
+                style="height: 200px">
+
+                </div>
 
                 <h2 class="article-listitem-title">{{ article.title }}</h2>
                 <h5 class="article-listitem-author">by {{ article.author }}</h5>
