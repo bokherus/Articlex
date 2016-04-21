@@ -1,5 +1,12 @@
 <div class="main">
-    <div class="container" ng-repeat="article in articles" ng-init="$last ? NProgress.end() : angular.noop()">
+  <div>
+  <ul class="nav nav-tabs nav-justified">
+    <li><a href="#/">Trending</a></li>
+    <li><a href="#/">Recommend for you</a></li>
+    <li><a href="#/">Tags</a></li>
+  </ul>
+</div>
+    <div class="container article-feed" ng-repeat="article in articles" ng-init="$last ? NProgress.end() : angular.noop()">
         <div class="article-listitem well col-md-10 col-sm-10">
             <!-- SHOW ARTICLE PUBLISHED DATE/TIME -->
             <!--<p>{{ article.pubdate | date : 'MMM d'}}</p> -->
