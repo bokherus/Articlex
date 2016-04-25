@@ -23,7 +23,6 @@ function rawQuery(query, callback) {
     });
 }
 
-
 function query(table, selects, where, clauses, callback) {
 
     var q = 'select ';
@@ -45,7 +44,7 @@ function query(table, selects, where, clauses, callback) {
         q += where[j];
         q += clauses[j];
         if (j < where.length - 1) q += ', ';
-        
+
     }
 
     q += ';';
@@ -53,5 +52,6 @@ function query(table, selects, where, clauses, callback) {
     rawQuery(q, callback);
 
 }
+
 
 module.exports = manipulator;

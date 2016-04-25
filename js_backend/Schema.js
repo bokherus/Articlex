@@ -15,13 +15,33 @@ var article = {
     id: 'articleId',
     title: 'title',
     content: 'content',
-    image: 'image',
     authorId: 'authorId',
+    time: 'createTime'
+  }
+};
+
+var love = {
+  table: 'tbl_loves',
+  column: {
+    uid : 'uid',
+    aid : 'articleId'
+  }
+};
+
+var comment = {
+  table: 'tbl_comments',
+  column: {
+    commentId: 'commentId',
+    aid: 'articleId',
+    commentorId: ' commentorId',
+    comment: 'comment',
     time: 'createTime'
   }
 };
 
 module.exports = {
   User: user,
-  Article: article
+  Article: article,
+  Love: love,
+  Comment: comment
 };
