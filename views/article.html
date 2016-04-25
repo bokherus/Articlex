@@ -1,12 +1,11 @@
 <div class="article">
-  <div class="container">
-    <img class="img-responsive article-image" ng-src="{{ detail.url }}">
-  </div>
 
+  <md-content>
+  <h3 class="article-title">{{ detail.title }}</h3>
+  <img ng-src="{{ detail.url }}" class="md-card-image">
+</md-content>
 
-  <div class="content-layout">
-    <h3 class="article-title">{{ detail.title }}</h3>
-    <h4 class="article-author">by {{ detail.author }}</h4>
+  <md-content class="content-layout">
 
 <p>Over fact all son tell this any his. No insisted confined of weddings to returned to debating rendered. Keeps order fully so do party means young. Table nay him jokes quick. In felicity up to graceful mistaken horrible consider. Abode never think to at. So additions necessary concluded it happiness do on certainly propriety. On in green taken do offer witty of.</p>
 
@@ -31,5 +30,17 @@
 <p>Ever man are put down his very. And marry may table him avoid. Hard sell it were into it upon. He forbade affixed parties of assured to me windows. Happiness him nor she disposing provision. Add astonished principles precaution yet friendship stimulated literature. State thing might stand one his plate. Offending or extremity therefore so difficult he on provision. Tended depart turned not are.</p>
 
 
-  </div>
+  </md-content>
+  <md-card>
+      <md-card-header>
+          <md-card-avatar>
+              <img class="md-user-avatar" ng-src="http://7108-presscdn-0-78.pagely.netdna-cdn.com/wp-content/uploads/2013/09/person-to-person-business.jpg" />
+          </md-card-avatar>
+          <md-card-header-text>
+              <span class="md-title">{{ detail.author }}</span>
+              <span class="md-subhead">{{ detail.pubdate | date : 'MMM d'}}</span>
+          </md-card-header-text>
+      </md-card-header>
+    </md-card>
+
 </div>

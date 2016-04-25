@@ -4,13 +4,13 @@ body {
     background-color: #ffffff;
 }
 h2 {
-    font-family: "Helvetica", sans-serif;
+    font-family: "Roboto", "Helvetica", sans-serif;
     font-size: 28px;
     font-weight: 600;
 }
 h3 {
     margin-top: 56px;
-    font-family: "Lucida Grande", Arial, sans-serif;
+    font-family: "Roboto", "Lucida Grande", Arial, sans-serif;
     font-weight: 700;
     font-style: normal;
     font-size: 36px;
@@ -43,6 +43,7 @@ a:link {
 }
 .article-feed {
     margin-top: 20px;
+    padding: 20px;
 }
 .article-listitem {
     padding: 15px;

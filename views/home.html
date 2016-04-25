@@ -1,36 +1,45 @@
-<div class="main">
-  <div class="container">
-  <ul class="nav nav-tabs col-md-8 col-sm-8">
-    <li><a href="#/">Trending</a></li>
-    <li><a href="#/">Recommend for you</a></li>
-    <li><a href="#/">Tags</a></li>
-  </ul>
-</div>
-    <div class="container article-feed" ng-repeat="article in articles" ng-init="$last ? NProgress.end() : angular.noop()">
-        <div class="article-listitem panel panel-default col-md-8 col-sm-8">
-            <!-- SHOW ARTICLE PUBLISHED DATE/TIME -->
-            <p>{{ article.pubdate | date : 'MMM d'}}</p>
+<div class="home">
+    <div class="container">
+        <ul class="nav nav-tabs col-md-8 col-sm-8">
+            <li><a href="#/">Trending</a></li>
+            <li><a href="#/">Recommend for you</a></li>
+            <li><a href="#/">Tags</a></li>
+        </ul>
+    </div>
+    <div class="article-feed" ng-repeat="article in articles" ng-init="$last ? NProgress.end() : angular.noop()">
+        <md-card>
+            <md-card-header>
+                <md-card-avatar>
+                    <img class="md-user-avatar" ng-src="http://7108-presscdn-0-78.pagely.netdna-cdn.com/wp-content/uploads/2013/09/person-to-person-business.jpg" />
+                </md-card-avatar>
+                <md-card-header-text>
+                    <span class="md-title">{{ article.author }}</span>
+                    <span class="md-subhead">{{ article.pubdate | date : 'MMM d'}}</span>
+                </md-card-header-text>
+            </md-card-header>
+
             <a href="#/articles/{{$index}}">
-                <div ng-style="{'background-image':'url({{article.url}})'}"
-                style="height: 200px">
-
-                </div>
-
-                <h2 class="article-listitem-title">{{ article.title }}</h2>
-                <h5 class="article-listitem-author">by {{ article.author }}</h5>
+                <img ng-src="{{ article.url }}" class="md-card-image" >
+                <md-card-title>
+                    <md-card-title-text>
+                        <span class="md-headline">{{ article.title }}</span>
+                    </md-card-title-text>
+                </md-card-title>
             </a>
-            <div class="row article-listitem-panel">
-                <div class="col-md-10">
-                    <button class="button-love">
-                        <!-- <i class="fa fa-heart-o fa-lg" aria-hidden="true"></i> -->
-                        <i class="fa fa-heart fa-lg" aria-hidden="true"></i>
-                    </button>
-                    <button class="button-love-text">{{ article.upvotes }}</button>
-                </div>
-                <div class="col-md-2">
-                    <p class="article-listitem-views">{{ article.views }} views</p>
-                </div>
-            </div>
-        </div>
+            <md-card-content>
+                <p>
+                    The titles of Washed Out's breakthrough song and the first single from Paracosm share the two most
+                    important words in Ernest Greene's musical language: feel it. It's a simple request, as well...
+                </p>
+            </md-card-content>
+
+            <md-card-actions layout="row" layout-align="start center">
+                <md-button class="md-icon-button" aria-label="Favorite">
+                    <i class="fa fa-heart fa-lg" aria-hidden="true"></i>
+                </md-button>
+                <p class="button-love-text">{{ article.upvotes }}</p>
+            </md-card-actions>
+
+        </md-card>
     </div>
 </div>
