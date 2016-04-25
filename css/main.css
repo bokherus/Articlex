@@ -51,9 +51,16 @@ a:link {
 .article-listitem-author {
     color: rgba(0, 0, 0, .5);
 }
+
+.article-listitem-content {
+  color: black;
+  text-decoration: none;
+  margin-top: 20px;
+}
 .article-listitem-panel {
     margin-top: 20px;
 }
+
 .article-listitem-views {
     color: rgba(0, 0, 0, .5);
 }

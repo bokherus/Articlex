@@ -10,6 +10,14 @@ app.config(function ($routeProvider) {
     	controller: 'ArticleController',
     	templateUrl: 'views/article.html'
   	})
+    .when('/new', {
+      controller: 'TinyMceController',
+      templateUrl: 'views/new.html'
+    })
+    .when('/register', {
+      controller: 'MainController',
+      templateUrl: 'views/register.html'
+    })
     .otherwise({
       redirectTo: '/'
     });

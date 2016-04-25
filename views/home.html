@@ -6,18 +6,20 @@
     <li><a href="#/">Tags</a></li>
   </ul>
 </div>
+<a href="#/new">New</a>
+<a href="#/register">Register</a>
     <div class="container article-feed" ng-repeat="article in articles" ng-init="$last ? NProgress.end() : angular.noop()">
         <div class="article-listitem panel panel-default col-md-8 col-sm-8">
             <!-- SHOW ARTICLE PUBLISHED DATE/TIME -->
-            <p>{{ article.pubdate | date : 'MMM d'}}</p>
+            <h4 class="article-listitem-author">{{ article.author }}</h4>
+            <h5>{{ article.pubdate | date : 'MMM d'}}</h5>
             <a href="#/articles/{{$index}}">
                 <div ng-style="{'background-image':'url({{article.url}})'}"
                 style="height: 200px">
-
                 </div>
 
                 <h2 class="article-listitem-title">{{ article.title }}</h2>
-                <h5 class="article-listitem-author">by {{ article.author }}</h5>
+                <p class="article-listitem-content">Over fact all son tell this any his. No insisted confined of weddings to returned to debating rendered. Keeps order fully so do party means young. Table nay him jokes quick. In felicity up to graceful mistaken horrible consider. Abode never think to at. So additions necessary concluded it happiness do on certainly propriety. On in green taken do offer witty of.</p>
             </a>
             <div class="row article-listitem-panel">
                 <div class="col-md-10">

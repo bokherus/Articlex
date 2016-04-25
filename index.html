@@ -4,12 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <title>Articlex</title>
+    <!-- Stylesheets -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="node_modules/nprogress/nprogress.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.min.js">
-    </script>
+
+    <!-- Scripts -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.min.js"></script>
     <script src="https://code.angularjs.org/1.2.28/angular-route.min.js"></script>
 </head>
 
@@ -24,10 +26,12 @@
             <ul class="user-menu dropdown-menu dropdown-menu-right">
                 <li><a href="#/">Profile</a></li>
                 <li><a href="#/">Settings</a></li>
-                <li><a href="#/">Log out</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a href="#/">Sign out</a></li>
             </ul>
         </div>
     </nav>
+
 
     <div ng-view></div>
 
