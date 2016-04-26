@@ -17,9 +17,11 @@
 
 <body ng-app="myApp">
 
-    <nav class="navbar navbar-default">
+    <header class="navbar navbar-default nav-down">
         <div class="container">
-            <a class="navbar-brand navbar-text " href="#/"><i class="fa fa-graduation-cap" aria-hidden="true"></i>   Articlex</a>
+            <a class="navbar-brand navbar-text" href="#/"><i class="fa fa-graduation-cap" aria-hidden="true"></i>   Articlex</a>
+            <a class="navbar-text" href="#/new">New</a>
+            <a class="navbar-text" href="#/register">Register</a>
             <button class="user-button navbar-text navbar-right dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                 <img class="user-pic" src="http://7108-presscdn-0-78.pagely.netdna-cdn.com/wp-content/uploads/2013/09/person-to-person-business.jpg">
             </button>
@@ -30,7 +32,7 @@
                 <li><a href="#/">Sign out</a></li>
             </ul>
         </div>
-    </nav>
+    </header>
 
 
     <div ng-view></div>
