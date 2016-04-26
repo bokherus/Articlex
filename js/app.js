@@ -26,3 +26,5 @@ app.config(function ($routeProvider) {
 $(document).ready(function() {
   NProgress.start();
 });
+
+$("header").headroom();
