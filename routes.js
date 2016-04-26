@@ -2,7 +2,8 @@ var Schema = require('./js_backend/Schema');
 var DbEditor = require('./js_backend/DbManipulator.js');
 
 var bcrypt = require('bcrypt-nodejs');
-
+var path = require('path');
+global.root = path.resolve(__dirname);
 module.exports = function(app, passport) {
 
     //GET index
@@ -89,6 +90,16 @@ module.exports = function(app, passport) {
             req.logout();
             res.redirect('/signin');
         }
+    });
+
+    app.get('/angular_module/:name', function(req, res, next) {
+        var moduleName = req.params.name;
+        res.sendFile(root + '/angular_module/' + moduleName);
+
+    });
+
+    app.get('/article', function(req, res, next) {
+        res.render('test.ejs');
     });
 
 
