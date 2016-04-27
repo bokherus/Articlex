@@ -39,9 +39,18 @@ var comment = {
   }
 };
 
+var tag = {
+  table: 'tbl_tags',
+  column: {
+    tagName: 'tag',
+    aid: 'articleId'
+  }
+};
+
 module.exports = {
   User: user,
   Article: article,
   Love: love,
-  Comment: comment
+  Comment: comment,
+  Tag: tag
 };

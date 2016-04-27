@@ -4,6 +4,25 @@ var DbEditor = require('./js_backend/DbManipulator.js');
 var bcrypt = require('bcrypt-nodejs');
 var path = require('path');
 global.root = path.resolve(__dirname);
+
+var newUserId = 1000000000;
+function init(){
+  var q = 'SELECT MAX(' + Schema.User.column.id + ') as max ' +
+          'FROM ' + Schema.User.table + ';';
+  console.log(q);
+  DbEditor.rawQuery(q, function(err, rows){
+    console.log(rows);
+    newUserId = rows[0].max + 1;
+    console.log('New user\'s id: ' + newUserId );
+  });
+}
+init();
+
+function incrementUserId(){
+  newUserId += 1;
+  console.log('Update new user\'s id to -> ' + newUserId);
+}
+
 module.exports = function(app, passport) {
 
     //GET index
@@ -44,8 +63,15 @@ module.exports = function(app, passport) {
                     var hash = bcrypt.hashSync(password);
 
                     //save user
-                    var q = 'INSERT INTO ' + Schema.User.table + ' (' + Schema.User.column.username + ', ' + Schema.User.column.password + ') ' +
-                            'VALUES (\'' + user.username + '\', \'' + hash + '\')';
+                    var q = 'INSERT INTO ' + Schema.User.table + ' ' +
+                            'VALUES (' + newUserId + ', \'' + user.username + '\', \'' + hash + '\')';
+
+                    DbEditor.rawQuery(q, function(err, rows){
+                      if(!err){
+                        res.redirect('/');
+                        incrementUserId();
+                      }
+                    });
 
                 } else { //when there is a match username
                   //render invalid username.

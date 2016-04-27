@@ -1,15 +1,8 @@
 var DbEditor = require('./DbManipulator');
 var Schema = require('./Schema');
 
-
-
 var getArticle = function(id, callback){
-  var q = 'SELECT ' + Schema.Article.column.id + ', ' + Schema.User.column.username + ' as author ,' + Schema.Article.column.content + ', date_format(' + Schema.Article.column.time + ', \'%e-%c-%Y %T\') as createTime' + ', ' + Schema.Article.column.title + ' ' +
-          'FROM ' + Schema.Article.table + ', ' + Schema.User.table + ' ' +
-          'WHERE ' + Schema.Article.column.id + '=' + id + ' AND ' + Schema.Article.column.authorId + '=' + Schema.User.column.commentId + ';';
-  console.log(q);
-  DbEditor.rawQuery(q, callback);
-  // DbEditor.query(Schema.Article.table, ['*'], [Schema.Article.column.id+'='], [id], callback);
+  DbEditor.query(Schema.Article.table, ['*'], [Schema.Article.column.id+'='], [id], callback);
 };
 
 var getLatestArticles = function(callback){
@@ -21,12 +14,7 @@ var getLatestArticles = function(callback){
 };
 
 var getLove = function(articleId, callback){
-  var q = 'SELECT ' + Schema.Love.column.uid + ', COUNT(' + Schema.Love.column.aid + ') as amount ' +
-          'FROM ' + Schema.Love.table + ' ' +
-          'WHERE ' + Schema.Love.column.aid + '=' + articleId + ';';
-  console.log(q);
-  DbEditor.rawQuery(q, callback);
-  // DbEditor.query(Schema.Love.table, [Schema.Love.column.uid, 'count(' + Schema.Love.column.aid +') as number'], [Schema.Love.column.aid+'='], [articleId], callback);
+  DbEditor.query(Schema.Love.table, [Schema.Love.column.uid, 'count(' + Schema.Love.column.aid +') as number'], [Schema.Love.column.aid+'='], [articleId], callback);
 };
 
 var postLove = function(userId, articleId, callback){
@@ -42,36 +30,26 @@ var deleteLove = function(userId, articleId, callback){
   DbEditor.rawQuery(q, callback);
 };
 
-var postArticle = function(newArticleId ,userId, title, content, callback){
+var postArticle = function(userId, title, content, callback){
   var q = 'INSERT INTO ' + Schema.Article.table + ' ( ' + Schema.Article.column.authorId + ', ' + Schema.Article.column.title + ', ' + Schema.Article.column.content + ', ' + Schema.Article.column.time +
-          ') VALUES ('+ newArticleId + ', ' + userId + ', ' + title + ', ' + content + ', NOW() );';
+          ') VALUES (' + userId + ', ' + title + ', ' + content + ', NOW() );';
   console.log(q);
   DbEditor.rawQuery(q, callback);
 };
 
 var getComments = function(articleId, callback){
-  var q = 'SELECT ' + Schema.Comment.column.commentId + ', ' + Schema.Comment.column.commentorId + ', ' + Schema.Comment.column.comment + ', date_format( ' + Schema.Comment.column.time + ', \'%e-%c-%Y %T\') as createTime' +
-          'FROM ' + Schema.Comment.table + ' ' +
-          'WHERE ' + Schema.Comment.column.aid + '=' + articleId + ';';
-  console.log(q);
-  DbEditor.rawQuery(q, callback);
-  // DbEditor.query(Schema.Comment.table, [Schema.Comment.column.commentId, Schema.Comment.column.commentorId, Schema.Comment.column.comment, 'date_format(' + Schema.Comment.column.time + ', \'%e-%c-%Y %T\') as createTime'], [Schema.Comment.column.aid+'='], [articleId], callback);
+  DbEditor.query(Schema.Comment.table, [Schema.Comment.column.commentId, Schema.Comment.column.commentorId, Schema.Comment.column.comment, 'date_format(' + Schema.Comment.column.time + ', \'%e-%c-%Y %T\') as createTime'], [Schema.Comment.column.aid+'='], [articleId], callback);
 };
 
-var postComment = function(newCommentId, articleId, commentorId, comment, callback){
+var postComment = function(articleId, commentorId, comment, callback){
   var q = 'INSERT INTO ' + Schema.Comment.table + ' ( ' + Schema.Comment.column.aid + ', ' + Schema.Comment.column.commentorId + ', ' + Schema.Comment.column.comment + ', ' + Schema.Comment.column.time + ') ' +
-          'VALUES (' + newCommentId + ', ' + articleId + ', ' + commentorId + ', ' + a(comment) + ', NOW());';
+          'VALUES (' + articleId + ', ' + commentorId + ', ' + a(comment) + ', NOW());';
   console.log(q);
   DbEditor.rawQuery(q, callback);
 };
 
 var getTagInArticle = function(articleId, callback){
-  var q = 'SELECT ' + Schema.Tag.column.tagName + ' ' +
-          'FROM ' + Schema.Tag.table + ' ' +
-          'WHERE ' + Schema.Tag.column.articleId + '=' + articleId + ';';
-  console.log(q);
-  DbEditor.rawQuery(q, callback);
-  // DbEditor.query(Schema.Tag.table, [Schema.Tag.column.tagName], [Schema.Tag.column.articleId+'='], articleId, callback);
+  DbEditor.query(Schema.Tag.table, [Schema.Tag.column.tagName], [Schema.Tag.column.articleId+'='], articleId, callback);
 };
 
 var getTaggedArticles = function(tagName, callback){

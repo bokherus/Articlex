@@ -1,6 +1,49 @@
 var ApiCalls = require('./js_backend/ApiCalls');
+var DbEditor = require('./js_backend/DbManipulator');
+var Schema = require('./js_backend/Schema');
 
 var debugMode = true;
+
+var newCommentId = 1000000000;
+var newArticleId = 1000000000;
+
+function init(){
+  var q = 'SELECT MAX(' + Schema.Article.column.id + ' ) as max ' +
+          'FROM ' + Schema.Article.table + ';';
+  var r = 'SELECT MAX(' + Schema.Comment.column.commentId + ' ) as max ' +
+          'FROM ' + Schema.Comment.table + ';';
+
+  DbEditor.rawQuery(q, function(err, rows){
+    if(!err){
+      console.log(rows);
+      newArticleId = rows[0].max + 1;
+      console.log('New article\'s id: ' + newArticleId);
+    } else {
+      console.log(err);
+    }
+  });
+
+  DbEditor.rawQuery(r, function(err, rows){
+    if(!err){
+      console.log(rows);
+      newCommentId = rows[0].max + 1;
+      console.log('New comment\'s id: ' + newCommentId);
+    } else {
+      console.log(err);
+    }
+  });
+}
+init();
+
+function incrementCommentId(){
+  newCommentId += 1;
+  console.log('Update new comment\'s id to -> ' + newCommentId);
+}
+
+function incrementArticleId(){
+  newArticleId += 1;
+  console.log('Update new article\'s id to -> ' + newArticleId);
+}
 
 module.exports = function(app, passport) {
     /*
@@ -63,7 +106,7 @@ module.exports = function(app, passport) {
 
           ApiCalls.getLovesInArticle(req.params.articleId, function(err, rows) {
               if(err){
-                res.json('');
+                res.json(err);
               } else {
                 res.json(rows);
               }
@@ -123,9 +166,10 @@ module.exports = function(app, passport) {
 
     app.post('/api/article/uid/:authorId', function(req, res, next) {
       if(req.isAuthenticated() || debugMode){
-          ApiCalls.postArticle(req.params.authorId, '\''+req.body.title+'\'', '\''+req.body.content+'\'', function(err, rows){
+          ApiCalls.postArticle(newArticleId, req.params.authorId, '\''+req.body.title+'\'', '\''+req.body.content+'\'', function(err, rows){
               if(!err){
                 res.json('redirect to article');
+                incrementArticleId();
               } else {
                 console.log(err);
               }
@@ -147,9 +191,12 @@ module.exports = function(app, passport) {
 
     app.post('/api/comment/aid/:articleId/commentorId/:commentorId', function(req, res, next) {
       if(req.isAuthenticated() || debugMode){
-        ApiCalls.postCommentsToArticle(req.params.articleId, req.params.commentorId, req.body.comment, function(err, rows){
-          console.log(rows);
-          console.log(err);
+        ApiCalls.postCommentsToArticle(newCommentId, req.params.articleId, req.params.commentorId, req.body.comment, function(err, rows){
+          if(!err){
+            incrementCommentId();
+          } else {
+            console.log(err);
+          }
         });
       }
     });
