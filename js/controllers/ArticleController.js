@@ -2,6 +2,7 @@ app.controller('ArticleController', ['$scope', 'articles', '$routeParams',
   function($scope, articles, $routeParams) {
     articles.success(function(data) {
     $scope.detail = data[$routeParams.id];
+    $scope.content = $scope.detail.content;
   });
 
   $scope.$on('$routeChangeSuccess',function() {
@@ -9,4 +10,6 @@ app.controller('ArticleController', ['$scope', 'articles', '$routeParams',
      window.scrollTo(0, 0);
      NProgress.stop();
   });
+
+
 }]);
