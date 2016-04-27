@@ -43,8 +43,8 @@ var deleteLove = function(userId, articleId, callback){
 };
 
 var postArticle = function(newArticleId ,userId, title, content, callback){
-  var q = 'INSERT INTO ' + Schema.Article.table + ' ( ' + Schema.Article.column.authorId + ', ' + Schema.Article.column.title + ', ' + Schema.Article.column.content + ', ' + Schema.Article.column.time +
-          ') VALUES ('+ newArticleId + ', ' + userId + ', ' + title + ', ' + content + ', NOW() );';
+  var q = 'INSERT INTO ' + Schema.Article.table +
+          ' VALUES ('+ newArticleId + ', ' + userId + ', ' + title + ', ' + content + ', NOW() );';
   console.log(q);
   DbEditor.rawQuery(q, callback);
 };
@@ -59,7 +59,7 @@ var getComments = function(articleId, callback){
 };
 
 var postComment = function(newCommentId, articleId, commentorId, comment, callback){
-  var q = 'INSERT INTO ' + Schema.Comment.table + ' ( ' + Schema.Comment.column.aid + ', ' + Schema.Comment.column.commentorId + ', ' + Schema.Comment.column.comment + ', ' + Schema.Comment.column.time + ') ' +
+  var q = 'INSERT INTO ' + Schema.Comment.table +
           'VALUES (' + newCommentId + ', ' + articleId + ', ' + commentorId + ', ' + a(comment) + ', NOW());';
   console.log(q);
   DbEditor.rawQuery(q, callback);

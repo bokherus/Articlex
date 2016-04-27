@@ -11,9 +11,11 @@ function init(){
           'FROM ' + Schema.User.table + ';';
   console.log(q);
   DbEditor.rawQuery(q, function(err, rows){
-    console.log(rows);
-    newUserId = rows[0].max + 1;
-    console.log('New user\'s id: ' + newUserId );
+    if(!err && rows[0].max !== null){
+      console.log(rows);
+      newUserId = rows[0].max + 1;
+      console.log('New user\'s id: ' + newUserId );
+    }
   });
 }
 init();
@@ -65,7 +67,7 @@ module.exports = function(app, passport) {
                     //save user
                     var q = 'INSERT INTO ' + Schema.User.table + ' ' +
                             'VALUES (' + newUserId + ', \'' + user.username + '\', \'' + hash + '\')';
-
+                    console.log(q);
                     DbEditor.rawQuery(q, function(err, rows){
                       if(!err){
                         res.redirect('/');

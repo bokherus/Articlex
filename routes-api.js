@@ -14,7 +14,7 @@ function init(){
           'FROM ' + Schema.Comment.table + ';';
 
   DbEditor.rawQuery(q, function(err, rows){
-    if(!err){
+    if(!err && rows[0].max !== null){
       console.log(rows);
       newArticleId = rows[0].max + 1;
       console.log('New article\'s id: ' + newArticleId);
@@ -24,7 +24,7 @@ function init(){
   });
 
   DbEditor.rawQuery(r, function(err, rows){
-    if(!err){
+    if(!err && rows[0].max !== null){
       console.log(rows);
       newCommentId = rows[0].max + 1;
       console.log('New comment\'s id: ' + newCommentId);
