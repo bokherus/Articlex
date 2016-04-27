@@ -12,11 +12,13 @@ function rawQuery(query, callback) {
 
     dbpool.getConnection(function(err, connection) {
         if (err) {
+            connection.release();
             callback(err);
             return;
         }
 
         connection.query(query, function(err, rows) {
+            connection.release();
             callback(err, rows);
         });
 
