@@ -5,7 +5,9 @@ var user = {
   column: {
     id: 'uid',
     username: 'username',
-    password: 'password'
+    password: 'password',
+    fname: 'firstName',
+    lname: 'lastName'
   }
 };
 
@@ -42,8 +44,16 @@ var comment = {
 var tag = {
   table: 'tbl_tags',
   column: {
-    tagName: 'tag',
+    tagName: 'tagName',
     aid: 'articleId'
+  }
+};
+
+var articleImage = {
+  table: 'tbl_articlesImage',
+  column: {
+    articleId: 'articleId',
+    url: 'image'
   }
 };
 
@@ -52,5 +62,6 @@ module.exports = {
   Article: article,
   Love: love,
   Comment: comment,
-  Tag: tag
+  Tag: tag,
+  ArticleImage: articleImage
 };

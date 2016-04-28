@@ -82,6 +82,34 @@ var getTaggedArticles = function(tagName, callback){
   DbEditor.rawQuery(q, callback);
 };
 
+var getUserInfo = function(username, callback){
+  var q = 'SELECT ' + Schema.User.column.id + ', ' + Schema.User.column.username + ', ' + Schema.User.column.fname + ', ' + Schema.User.column.lnamme + ' ' +
+          'FROM ' + Schema.User.table +
+          'WHERE ' + Schema.User.column.username + '=' + username + ';';
+  console.log(q);
+  DbEditor.rawQuery(q, callback);
+};
+
+var postArticleImage = function(articleId, imageURL, callback){
+  var q = 'INSERT INTO ' + Schema.ArticleImage.table + ' ' +
+          'VAULES (' + articleId + ', ' + a(imageURL) + ');';
+  console.log(q);
+  DbEditor.rawQuery(q, callback);
+};
+
+var postTagFromArticle = function(articleId, tags, callback){
+  var q = 'INSERT INTO ' + Schema.Tag.table + ' ' +
+          'VALUES ';
+  for(var i = 0; i < tags.length; i++) {
+    q += '( ' + a(tags[i]) + ', ' + articleId + ')';
+    if(i < tags.length - 1) q += ',';
+    else q += ';';
+  }
+  console.log(q);
+  DbEditor.rawQuery(q, callback);
+};
+
+
 
 function a(s){
   return '\''+s+'\'';

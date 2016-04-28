@@ -45,23 +45,11 @@ function incrementArticleId(){
   console.log('Update new article\'s id to -> ' + newArticleId);
 }
 
+function toString(s){
+  return '\'' + s + '\'';
+}
+
 module.exports = function(app, passport) {
-    /*
-            API
-    */
-    // app.get('/api/article/:username/:article_name', function(req, res, next) {
-    //
-    //     if (req.isAuthenticated() || debugMode) {
-    //         //TODO: delete this or do query, then return as json
-    //         res.json({
-    //             title: 'title',
-    //             content: 'this is a test'
-    //         });
-    //
-    //     } else {
-    //         res.redirect('/signin');
-    //     }
-    // });
 
 
     app.get('/api/article/id/:id', function(req, res, next) {
@@ -72,7 +60,7 @@ module.exports = function(app, passport) {
                 if (err) {
                     res.json('');
                 } else {
-                    res.json(rows);
+                    res.json(rows[0]);
                 }
             });
 
@@ -140,6 +128,8 @@ module.exports = function(app, passport) {
               }
 
           });
+      } else {
+        res.redirect('/');
       }
     });
 
@@ -161,19 +151,29 @@ module.exports = function(app, passport) {
               console.log(err);
             }
         });
+      } else {
+        res.redirect('/');
       }
     });
 
     app.post('/api/article/uid/:authorId', function(req, res, next) {
       if(req.isAuthenticated() || debugMode){
-          ApiCalls.postArticle(newArticleId, req.params.authorId, '\''+req.body.title+'\'', '\''+req.body.content+'\'', function(err, rows){
+          ApiCalls.postArticle(newArticleId, req.params.authorId, toString(req.body.title), toString(req.body.content), function(err, rows){
               if(!err){
                 res.json('redirect to article');
                 incrementArticleId();
               } else {
                 console.log(err);
               }
+              if(req.body.articleImage === ''){
+                ApiCalls.postArticleImage(newArticleId-1, req.body.articleImage, function(err, rows){
+
+                });
+              }
           });
+
+      } else {
+        res.redirect('/');
       }
     });
 
@@ -186,6 +186,8 @@ module.exports = function(app, passport) {
                 console.log(err);
               }
           });
+      } else {
+        res.redirect('/');
       }
     });
 
@@ -198,8 +200,23 @@ module.exports = function(app, passport) {
             console.log(err);
           }
         });
+      } else {
+        res.redirect('/');
       }
     });
+
+    app.get('/api/userinfo/username/:username', function(req, res, next){
+      if(req.isAuthenticated() || debugMode){
+        ApiCalls.getUserInfo(req.params.username, function(err, rows){
+          if(!err){
+            res.json(rows[0]);
+          }
+        });
+      } else {
+        res.redirect('/');
+      }
+    });
+
 
 
 };

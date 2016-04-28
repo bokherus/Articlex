@@ -25,6 +25,10 @@ function incrementUserId(){
   console.log('Update new user\'s id to -> ' + newUserId);
 }
 
+function toString(string){
+  return '\'' + string +'\'';
+}
+
 module.exports = function(app, passport) {
 
     //GET index
@@ -41,12 +45,13 @@ module.exports = function(app, passport) {
     //GET signin page
     app.get('/signin', function(req, res, next) {
         if (req.isAuthenticated()) res.redirect('/');
-        res.render('signin.ejs');
+        else res.render('login.ejs');
     });
 
     //GET signup page
     app.get('/signup', function(req, res, next) {
-        res.render('signup.ejs');
+        if (req.isAuthenticated()) res.redirect('/');
+        else res.render('login.ejs');
 
     });
 
@@ -63,14 +68,17 @@ module.exports = function(app, passport) {
 
                     var password = user.password;
                     var hash = bcrypt.hashSync(password);
+                    var fname = user.firstName;
+                    var lname = user.lastName;
+
 
                     //save user
                     var q = 'INSERT INTO ' + Schema.User.table + ' ' +
-                            'VALUES (' + newUserId + ', \'' + user.username + '\', \'' + hash + '\')';
-                    console.log(q);
+                            'VALUES (' + newUserId + ', \'' + user.username + '\', \'' + hash + '\''+ ', ' + toString(fname) + ', ' + toString(lname) + ')' ;
+                    console.log('signup' + q);
                     DbEditor.rawQuery(q, function(err, rows){
                       if(!err){
-                        res.redirect('/');
+                        res.redirect('/', { username : user.username });
                         incrementUserId();
                       }
                     });
@@ -105,6 +113,7 @@ module.exports = function(app, passport) {
                     if (err) {
                         return; //render web with error message
                     } else {
+
                         return res.redirect('/');
                     }
                 });
@@ -126,8 +135,22 @@ module.exports = function(app, passport) {
 
     });
 
+    app.get('/css/:name', function(req, res, next) {
+        var cssName = req.params.name;
+        res.sendFile(root + '/css/' + cssName);
+    });
+
+    app.get('/js/:name', function(req, res, next){
+        var jsName = req.params.name;
+        res.sendFile(root + '/js/' + jsName);
+    });
+
     app.get('/article', function(req, res, next) {
         res.render('test.ejs');
+    });
+
+    app.get('/images/:name' , function(req, res, next) {
+        res.sendFile(root + '/images/' + req.params.name);
     });
 
 

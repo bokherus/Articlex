@@ -1,7 +1,9 @@
 CREATE TABLE tbl_users(
   uid int primary key,
-  username varchar(30) not null,
+  username varchar(255) not null,
   password varchar(100) not null,
+  firstName varchar(255) not null,
+  lastName varchar(255) not null,
   check (uid>=1000000000)
 );
 
@@ -19,12 +21,13 @@ CREATE TABLE tbl_loves(
   articleId int not null,
   uid int not null,
   FOREIGN KEY(uid) REFERENCES tbl_users(uid),
-  FOREIGN KEY(articleId) REFERENCES tbl_articles(articleId)
+  FOREIGN KEY(articleId) REFERENCES tbl_articles(articleId),
+  PRIMARY KEY(articleId, uid)
 );
 
 CREATE TABLE tbl_articlesImage(
   articleId int primary key,
-  image varchar(255) not null,
+  image text not null,
   FOREIGN KEY(articleId) REFERENCES tbl_articles(articleId)
 );
 
@@ -42,5 +45,6 @@ CREATE TABLE tbl_comments(
 CREATE TABLE tbl_tags(
   tagName varchar(255) not null,
   articleId int not null,
-  FOREIGN KEY(articleId) REFERENCES tbl_articles(articleId)
+  FOREIGN KEY(articleId) REFERENCES tbl_articles(articleId),
+  PRIMARY KEY (tagName, articleId);
 );
