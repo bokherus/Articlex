@@ -7,7 +7,7 @@
         </ul>
     </div>
 
-    <div class="container article-feed" ng-repeat="article in articles" ng-init="$last ? NProgress.end() : angular.noop()">
+    <div class="container article-feed" ng-repeat="article in articles">
         <div class="article-listitem panel panel-default col-md-8 col-sm-8">
             <!-- SHOW ARTICLE PUBLISHED DATE/TIME -->
             <div class="row">
@@ -17,13 +17,13 @@
                 <div class="col-xs-10 col-sm-10 col-md-11">
                     <div class="row">
                         <a class="article-listitem-author" href="#/">{{ article.author }}</a>
-                        <p class="article-listitem-pubdate">{{ article.pubdate | date : 'MMM d'}}</p>
+                        <p class="article-listitem-pubdate">{{ article.createTime | date : 'MMM d'}}</p>
                     </div>
                 </div>
             </div>
 
             <a href="#/articles/{{$index}}">
-              <div ng-style="{'background-image':'url({{article.url}})'}" style="height: 200px"></div>
+              <!-- <div class="article-listitem-image" ng-style="{'background-image':'url({{article.url}})'}" style="height: 200px"></div> -->
                 <h2 class="article-listitem-title">{{ article.title }}</h2>
                 <p class="article-listitem-content">Over fact all son tell this any his. No insisted confined of weddings to returned to debating rendered. </p>
             </a>

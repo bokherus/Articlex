@@ -1,4 +1,4 @@
-var app = angular.module("myApp", ['ngRoute', 'ngSanitize']);
+var app = angular.module("myApp", ['ngRoute', 'ngSanitize', 'ngWig']);
 
 app.config(function ($routeProvider) {
   $routeProvider
@@ -11,7 +11,7 @@ app.config(function ($routeProvider) {
     	templateUrl: 'views/article.html'
   	})
     .when('/new', {
-      controller: 'TinyMceController',
+      controller: 'EditorController',
       templateUrl: 'views/new.html'
     })
     .when('/register', {
@@ -27,4 +27,17 @@ $(document).ready(function() {
   NProgress.start();
 });
 
-$("header").headroom();
+var header = document.querySelector("#header");
+
+if (window.location.hash) {
+  header.classList.add("headroom--unpinned");
+}
+
+var headroom = new Headroom(header, {
+    tolerance: {
+      down : 10,
+      up : 20
+    },
+    offset : 205
+});
+headroom.init();

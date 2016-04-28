@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="node_modules/nprogress/nprogress.css">
-    <link rel="stylesheet" href="https://cdn.rawgit.com/stevermeister/ngWig/master/dist/css/ng-wig.css">
+    <link rel="stylesheet" href="node_modules/ng-wig/dist/css/ng-wig.css">
 
     <!-- Scripts -->
     <script src="https://code.jquery.com/jquery-1.12.3.min.js"   integrity="sha256-aaODHAgvwQW1bFOGXMeX+pC4PZIPsvn2h1sArYOhgXQ="   crossorigin="anonymous"></script>
@@ -24,8 +24,7 @@
     <header id ="header" class="headroom navbar navbar-default navbar-fixed-top">
         <div class="container">
             <a class="navbar-brand" href="#/"><i class="fa fa-graduation-cap" aria-hidden="true"></i>   Articlex</a>
-            <a class="navbar-text" href="#/new">New</a>
-            <a class="navbar-text" href="#/register">Register</a>
+            <a class="navbar-text" href="#/new">New article</a>
             <button class="user-button navbar-right dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                 <img class="user-pic" src="http://7108-presscdn-0-78.pagely.netdna-cdn.com/wp-content/uploads/2013/09/person-to-person-business.jpg">
             </button>
@@ -42,33 +41,14 @@
 
 
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-    <script src="js/app.js"></script>
     <script src="https://npmcdn.com/headroom.js"></script>
-    <script>
-
-(function() {
-  var header = document.querySelector("#header");
-
-  if (window.location.hash) {
-    header.classList.add("headroom--unpinned");
-  }
-
-  var headroom = new Headroom(header, {
-      tolerance: {
-        down : 10,
-        up : 20
-      },
-      offset : 205
-  });
-  headroom.init();
-
-}());
-
-    </script>
+    <script src="node_modules/ng-wig/dist/ng-wig.js"></script>
+    <script src="js/app.js"></script>
 
     <!-- Controllers -->
     <script src="js/controllers/MainController.js"></script>
     <script src="js/controllers/ArticleController.js"></script>
+    <script src="js/controllers/EditorController.js"></script>
 
     <!-- Services -->
     <script src="js/services/articles.js"></script>
