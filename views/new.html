@@ -1,6 +1,16 @@
 <div class="new-article-section container">
-  <form action="" method="post">
-    <textarea ng-wig="text1" class="editor"></textarea>
-     <button id="submit" class="btn btn-success" onClick="console.log("CLicked")">Submit</button>
+  <form action="" >
+    <button class="post-btn" ng-click="show()">POST</button>
+    <div class="row">
+      <div class="col-md-2">
+        <p>Title</p>
+      </div>
+      <div class="col-md-10">
+        <input id="title-input" type="text" placeholder="Your title here"></input>
+      </div>
+
+    </div>
+     <div class="editor" ui-tinymce="tinymceOptions" ng-model="tinymceModel"></div>
+
   </form>
 </div>

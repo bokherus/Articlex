@@ -12,7 +12,7 @@
             <!-- SHOW ARTICLE PUBLISHED DATE/TIME -->
             <div class="row">
                 <div class="col-xs-2 col-sm-2 col-md-1">
-                    <img class="user-pic" ng-src="{{ article.url }}">
+                    <img class="user-pic" ng-src="{{ userImage }}">
                 </div>
                 <div class="col-xs-10 col-sm-10 col-md-11">
                     <div class="row">
@@ -33,10 +33,7 @@
                         <i class="fa fa-heart-o fa-lg" aria-hidden="true"></i>
                         <!-- <i class="fa fa-heart fa-lg" aria-hidden="true"></i> -->
                     </button>
-                    <button class="button-love-text">{{ article.upvotes }}</button>
-                </div>
-                <div class="col-md-2">
-                    <p class="article-listitem-views">{{ article.views }} views</p>
+                    <button class="button-love-text">{{ loves }}</button>
                 </div>
             </div>
         </div>

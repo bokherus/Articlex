@@ -19,7 +19,7 @@ a {
     color: #4CAF50;
 }
 a:hover {
-    color: #00C853;
+    color: #388E3C;
 }
 a:link {
     text-decoration: none;
@@ -39,15 +39,6 @@ a:link {
     width: 700px;
     margin: 0 auto;
 }
-
-/*.header--fixed {
-    position: fixed;
-    z-index: 10;
-    right: 0;
-    left: 0;
-    top: 0;
-}*/
-
 .headroom {
     transition: transform .25s ease-in-out;
     will-change: transform
@@ -122,7 +113,7 @@ a:link {
     width: 35px;
     height: 35px;
     border-radius: 50%;
-    border: 0.5px solid;
+    border: none;
     border-color: rgba(0, 0, 0, 0.2);
 }
 .user-button {
@@ -155,4 +146,32 @@ a:link {
 }
 .new-article-section {
     margin-top: 100px;
+}
+
+.post-btn {
+  font-size: 16px;
+  background-color: #4CAF50;
+  color: #FFFFFF;
+  border: none;
+  padding: 5px;
+}
+
+.post-btn:hover {
+  background-color: #388E3C;
+}
+
+.editor {
+  background-color: #eeeeee;
+  height: 600px;
+}
+
+#title-input {
+  font-size: 24px;
+  outline: none;
+  width: 100%;
+
+}
+
+#nprogress .bar {
+  background: #00E676;
 }

@@ -1,4 +1,4 @@
-var app = angular.module("myApp", ['ngRoute', 'ngSanitize', 'ngWig']);
+var app = angular.module("myApp", ['ngRoute', 'ngSanitize', 'ui.tinymce']);
 
 app.config(function ($routeProvider) {
   $routeProvider
