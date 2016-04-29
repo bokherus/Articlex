@@ -11,7 +11,9 @@ function($scope) {
       // put logic here for keypress and cut/paste changes
     },
     inline: true,
-    plugins : 'advlist autolink link image lists charmap print preview',
+    menubar: false,
+    toolbar: 'styleselect | undo redo | bold italic | link image',
+    plugins : 'advlist autolink link image lists charmap',
     skin: 'lightgray',
     theme : 'modern'
   };
