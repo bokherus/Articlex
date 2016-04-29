@@ -160,16 +160,11 @@ a:link {
   background-color: #388E3C;
 }
 
-.editor {
-  background-color: #eeeeee;
-  height: 600px;
-}
-
 #title-input {
   font-size: 24px;
   outline: none;
   width: 100%;
-
+  padding: 15px;
 }
 
 #nprogress .bar {

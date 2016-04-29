@@ -1,17 +1,16 @@
 app.controller('EditorController', ['$scope',
 function($scope) {
   $scope.show = function() {
-    console.log("Clicked");
-    alert($scope.content);
+    console.log($scope.content);
   };
 
-  $scope.content = "abc";
+  $scope.content = "Type your story here";
 
   $scope.tinymceOptions = {
     onChange: function(e) {
       // put logic here for keypress and cut/paste changes
     },
-    inline: false,
+    inline: true,
     plugins : 'advlist autolink link image lists charmap print preview',
     skin: 'lightgray',
     theme : 'modern'

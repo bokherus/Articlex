@@ -1,16 +1,9 @@
-<div class="new-article-section container">
+<div class="new-article-section content-layout">
   <form action="" >
     <button class="post-btn" ng-click="show()">POST</button>
-    <div class="row">
-      <div class="col-md-2">
-        <p>Title</p>
-      </div>
-      <div class="col-md-10">
-        <input id="title-input" type="text" placeholder="Your title here"></input>
-      </div>
+      <h3><input id="title-input" type="text" placeholder="Your title here"></input></h3>
 
-    </div>
-     <div class="editor" ui-tinymce="tinymceOptions" ng-model="tinymceModel"></div>
+     <div ui-tinymce="tinymceOptions" ng-model="content"></div>
 
   </form>
 </div>
