@@ -1,4 +1,4 @@
-var app = angular.module("myApp", ['ngRoute', 'ngSanitize', 'ui.tinymce']);
+var app = angular.module("myApp", ['ngRoute', 'ngSanitize', 'ui.tinymce', 'relativeDate']);
 
 app.config(function ($routeProvider) {
   $routeProvider

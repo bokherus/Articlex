@@ -17,7 +17,7 @@
                 <div class="col-xs-10 col-sm-10 col-md-11">
                     <div class="row">
                         <a class="article-listitem-author" href="#/">{{ article.author }}</a>
-                        <p class="article-listitem-pubdate">{{ article.createTime | date : 'MMM d'}}</p>
+                        <p class="article-listitem-pubdate">{{ article.createTime | relativeDate }}</p>
                     </div>
                 </div>
             </div>
