@@ -7,18 +7,21 @@ html {
 }
 
 body {
+
   background: url("../images/photo_bg.jpg") no-repeat center center fixed;
 	background-size: cover;
 	font-size: 16px;
 	font-family: 'Lato', sans-serif;
-	font-weight: 300;
+	font-weight: 400;
 	margin: 0;
 	color: #666;
     
+
 }
 
 a {
   text-decoration: none;
+
   color: #E91E63;
   -webkit-transition: .5s ease;
   transition: .5s ease;
@@ -32,23 +35,24 @@ a:hover {
 .form {
   background: rgba(19, 35, 47, 0.9);
   padding: 40px;
+
   max-width: 550px;
   margin: 40px auto;
   border-radius: 4px;
-  box-shadow: 0 4px 10px 4px rgba(19, 35, 47, 0.5);
+  box-shadow: 0 4px 10px 4px rgba(19, 35, 47, 0.9);
+
 }
 
 .tab-group {
   list-style: none;
   padding: 0;
   margin: 0 0 40px 0;
-  
 }
 .tab-group:after {
   content: "";
   display: table;
   clear: both;
-    
+
 }
 .tab-group li a {
   display: block;
@@ -57,6 +61,7 @@ a:hover {
   background: rgba(160, 179, 176, 0.25);
   color: #a0b3b0 ;
   font-size: 20px;
+  font-weight: 600;
   float: left;
   width: 50%;
   text-align: center;
@@ -65,11 +70,11 @@ a:hover {
   transition: .5s ease;
 }
 .tab-group li a:hover {
-  background: #00BFA5;
-  color: #ffffff;
+  background: #B3E5FC;
+  color: #0277BD;
 }
 .tab-group .active a {
-  background: #00796B;
+  background: #0288D1;
   color: #ffffff;
 }
 
@@ -82,7 +87,7 @@ h1#title {
 	font-weight: 300;
 	font-size: 3.2em;
 	color: #CFD8DC;
-	text-shadow: 0 0 10px rgba(0,0,0,0.8);
+	text-shadow: 0 0 10px rgba(0,0,0,0.9);
 	margin: 0 auto;
 	padding-top: 60px;
 	max-width: 300px;
@@ -158,6 +163,19 @@ textarea {
   margin-bottom: 40px;
 }
 
+
+.top {
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	background: -moz-linear-gradient(top,  rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(top,  rgba(0,0,0,0.8) 0%,rgba(0,0,0,0) 100%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(to bottom,  rgba(0,0,0,0.8) 0%,rgba(0,0,0,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#99000000', endColorstr='#00000000',GradientType=0 ); /* IE6-9 */
+}
+
+
+
 .top-row:after {
   content: "";
   display: table;
@@ -181,14 +199,16 @@ textarea {
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: .1em;
-  background: #00796B;
+  background: #0288D1;
   color: #ffffff;
   -webkit-transition: all 0.5s ease;
   transition: all 0.5s ease;
   -webkit-appearance: none;
 }
 .button:hover, .button:focus {
-  background: #00BFA5;
+  background: #B3E5FC;
+  color: #0288D1;
+
 }
 
 .button-block {
@@ -196,7 +216,4 @@ textarea {
   width: 100%;
 }
 
-.forgot {
-  margin-top: -20px;
-  text-align: left;
-}
+
