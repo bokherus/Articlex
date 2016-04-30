@@ -14,7 +14,7 @@ var getArticle = function(id, callback){
 var getLatestArticles = function(callback){
   var q = 'SELECT articleId, username as author, content, createTime, title FROM ' + Schema.Article.table + ', ' + Schema.User.table +
           ' WHERE ' + Schema.Article.table + '.' + Schema.Article.column.authorId + ' =' + ' ' + Schema.User.table + '.' + Schema.User.column.id +
-          ';';
+          ' ORDER BY ' + Schema.Article.column.time + ' DESC;';
   console.log(q);
   DbEditor.rawQuery(q, callback);
 };
