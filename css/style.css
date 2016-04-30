@@ -35,11 +35,14 @@ a:hover {
 .form {
   background: rgba(19, 35, 47, 0.9);
   padding: 40px;
-
   max-width: 550px;
   margin: 40px auto;
   border-radius: 4px;
-  box-shadow: 0 4px 10px 4px rgba(19, 35, 47, 0.9);
+  box-shadow: 0 5px 10px 4px rgba(19, 35, 47, 0.9);
+  border-radius: 10px 10px 10px 10px;
+  -moz-border-radius: 10px 10px 10px 10px;
+  -webkit-border-radius: 10px 10px 10px 10px;
+  border: 0px solid #000000;
 
 }
 
@@ -68,13 +71,14 @@ a:hover {
   cursor: pointer;
   -webkit-transition: .5s ease;
   transition: .5s ease;
+    
 }
 .tab-group li a:hover {
-  background: #B3E5FC;
-  color: #0277BD;
+  background: #B2DFDB;
+  color: #00695C;
 }
 .tab-group .active a {
-  background: #0288D1;
+  background: #009688;
   color: #ffffff;
 }
 
@@ -199,15 +203,19 @@ textarea {
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: .1em;
-  background: #0288D1;
+  background: #009688;
   color: #ffffff;
   -webkit-transition: all 0.5s ease;
   transition: all 0.5s ease;
   -webkit-appearance: none;
+    border-radius: 10px 10px 10px 10px;
+  -moz-border-radius: 10px 10px 10px 10px;
+  -webkit-border-radius: 10px 10px 10px 10px;
+  border: 0px solid #000000;
 }
 .button:hover, .button:focus {
-  background: #B3E5FC;
-  color: #0288D1;
+  background: #B2DFDB;
+  color: #00695C;
 
 }
 
