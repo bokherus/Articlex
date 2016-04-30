@@ -150,24 +150,40 @@ a:link {
 
 .post-btn {
   font-size: 16px;
-  background-color: #4CAF50;
-  color: #FFFFFF;
+  background: transparent;
+  color: #4CAF50;
   border: none;
   padding: 5px;
   float: right;
+  outline: none;
 }
 
 .post-btn:hover {
-  background-color: #388E3C;
+  color: #388E3C;
 }
 
 #title-input {
-  font-size: 24px;
   outline: none;
   width: 100%;
-  padding: 15px;
+  border: none;
 }
 
 #nprogress .bar {
   background: #00E676;
+}
+.content-editor:before {
+  display: none;
+}
+.content-editor.empty:before {
+  color: #9E9E9E;
+  font-size: 21px;
+  font-family: Georgia, serif;
+  font-weight: 400;
+  display: block;
+  position: absolute;
+  content: attr(data-placeholder);
+}
+
+.hide {
+  visibility: hidden;
 }
