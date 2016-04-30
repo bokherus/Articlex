@@ -31,29 +31,6 @@ function toString(string){
 
 module.exports = function(app, passport) {
 
-    //GET index
-    app.get('/', function(req, res, next) {
-        if (!req.isAuthenticated()) {
-            res.redirect('/signin');
-        } else {
-            var user = req.user;
-            res.render('test.ejs');
-
-        }
-    });
-
-    //GET signin page
-    app.get('/signin', function(req, res, next) {
-        if (req.isAuthenticated()) res.redirect('/');
-        else res.render('login.ejs');
-    });
-
-    //GET signup page
-    app.get('/signup', function(req, res, next) {
-        if (req.isAuthenticated()) res.redirect('/');
-        else res.render('login.ejs');
-
-    });
 
     //POST signup
     app.post('/signup', function(req, res, next) {
