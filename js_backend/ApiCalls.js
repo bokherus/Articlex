@@ -2,9 +2,8 @@ var DbEditor = require('./DbManipulator');
 var Schema = require('./Schema');
 
 
-
 var getArticle = function(id, callback){
-  var q = 'SELECT ' + Schema.Article.column.id + ', ' + Schema.User.column.username + ' as author ,' + Schema.Article.column.content + ', date_format(' + Schema.Article.column.time + ', \'%e-%c-%Y %T\') as createTime' + ', ' + Schema.Article.column.title + ' ' +
+  var q = 'SELECT ' + Schema.Article.column.id + ', ' + Schema.User.column.username + ' as author ,' + Schema.Article.column.content + ', ' + Schema.Article.column.time + ', ' + Schema.Article.column.title + ' ' +
           'FROM ' + Schema.Article.table + ', ' + Schema.User.table + ' ' +
           'WHERE ' + Schema.Article.column.id + '=' + id + ' AND ' + Schema.Article.column.authorId + '=' + Schema.User.column.commentId + ';';
   console.log(q);
@@ -13,17 +12,17 @@ var getArticle = function(id, callback){
 };
 
 var getLatestArticles = function(callback){
-  var q = 'SELECT articleId, username as author, content, date_format(createTime, \'%e-%c-%Y %T\') as createTime, title FROM ' + Schema.Article.table + ', ' + Schema.User.table +
+  var q = 'SELECT articleId, username as author, content, createTime, title FROM ' + Schema.Article.table + ', ' + Schema.User.table +
           ' WHERE ' + Schema.Article.table + '.' + Schema.Article.column.authorId + ' =' + ' ' + Schema.User.table + '.' + Schema.User.column.id +
-          ' LIMIT 10;';
+          ';';
   console.log(q);
   DbEditor.rawQuery(q, callback);
 };
 
 var getLove = function(articleId, callback){
-  var q = 'SELECT ' + Schema.Love.column.uid + ', COUNT(' + Schema.Love.column.aid + ') as amount ' +
-          'FROM ' + Schema.Love.table + ' ' +
-          'WHERE ' + Schema.Love.column.aid + '=' + articleId + ';';
+  var q = 'SELECT ' + Schema.Love.column.uid + ', concat(' + Schema.User.column.fname + ', ' + a(' ') + ', ' + Schema.User.column.lname +  ') as fullname ' +
+          'FROM ' + Schema.User.table + ' ' +
+          'WHERE ' + Schema.Love.table + '.' + Schema.Love.column.aid + '=' + articleId + ' AND ' + Schema.Article.table + '.' + Schema.Article.column.id + '=' + Schema.Love.col +';';
   console.log(q);
   DbEditor.rawQuery(q, callback);
   // DbEditor.query(Schema.Love.table, [Schema.Love.column.uid, 'count(' + Schema.Love.column.aid +') as number'], [Schema.Love.column.aid+'='], [articleId], callback);
