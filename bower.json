@@ -13,5 +13,9 @@
     "bower_components",
     "test",
     "tests"
-  ]
+  ],
+  "dependencies": {
+    "tinymce": "tinymce-dist#^4.3.11",
+    "angular-ui-tinymce": "^0.0.15"
+  }
 }
