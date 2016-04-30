@@ -15,7 +15,7 @@ body {
 	font-weight: 400;
 	margin: 0;
 	color: #666;
-    
+
 
 }
 
@@ -25,8 +25,8 @@ a {
   color: #E91E63;
   -webkit-transition: .5s ease;
   transition: .5s ease;
-    
-    
+
+
 }
 a:hover {
   color: #179b77;
@@ -39,7 +39,7 @@ a:hover {
   margin: 40px auto;
   border-radius: 4px;
   box-shadow: 0 5px 10px 4px rgba(19, 35, 47, 0.9);
-  
+
 
 }
 
@@ -68,7 +68,7 @@ a:hover {
   cursor: pointer;
   -webkit-transition: .5s ease;
   transition: .5s ease;
-    
+
 }
 .tab-group li a:hover {
   background: #B2DFDB;
@@ -217,5 +217,3 @@ textarea {
   display: block;
   width: 100%;
 }
-
-
