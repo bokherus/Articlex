@@ -9,5 +9,3 @@ app.factory('articles', ['$http', function($http) {
            return data;
          });
 }]);
-
-// https://s3.amazonaws.com/codecademy-content/courses/ltp4/photos-api/photos.json

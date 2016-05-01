@@ -25,7 +25,7 @@ app.controller('ArticleController', ['$scope', 'articles', '$routeParams', '$htt
    })
     .success(function(data) {
       console.log("sent");
-      
+
       $scope.$apply(function() {
           $scope.comments.push(data);
       });
@@ -44,7 +44,7 @@ app.controller('ArticleController', ['$scope', 'articles', '$routeParams', '$htt
            });
 
     console.log($scope.comments);
-  }
+  };
 
 
   $scope.$on('$routeChangeSuccess',function() {
