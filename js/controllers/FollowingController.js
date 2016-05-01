@@ -1,22 +1,22 @@
-app.controller('MainController',[
+app.controller('FollowingController',[
   '$scope',
   '$http',
-  'articles',
   'userinfo',
-  function($scope, $http, articles, userinfo) {
+  function($scope, $http, userinfo) {
 
-  articles.success(function(data) {
-    $scope.articles = data;
-    $scope.userImage = "https://image.freepik.com/free-icon/user-male-shape-in-a-circle--ios-7-interface-symbol_318-39025.png";
-
-    console.log(userinfo.getInfo());
-
-    for (var i in $scope.articles) {
-      $scope.articles[i].class = "fa fa-heart-o fa-lg";
-      getLove($scope.articles[i].articleId, i);
-    }
-
-  });
+  $http.get('http://chinnnoo.xyz:8889/api/article/latest')
+           .success(function(data) {
+             $scope.articles = data
+             $scope.userImage = "https://image.freepik.com/free-icon/user-male-shape-in-a-circle--ios-7-interface-symbol_318-39025.png";
+             for (var i in $scope.articles) {
+               $scope.articles[i].class = "fa fa-heart-o fa-lg";
+               getLove($scope.articles[i].articleId, i);
+             }
+             return data;
+           })
+           .error(function(data) {
+             return data;
+           });
 
   $scope.love = function(index) {
    if ($scope.articles[index].class === "fa fa-heart-o fa-lg") {

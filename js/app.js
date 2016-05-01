@@ -6,6 +6,10 @@ app.config(function ($routeProvider) {
       controller: 'MainController',
       templateUrl: 'views/home.html'
     })
+    .when('/following', {
+      controller: 'FollowingController',
+      templateUrl: 'views/home.html'
+    })
     .when('/articles/:id', {
     	controller: 'ArticleController',
     	templateUrl: 'views/article.html'
