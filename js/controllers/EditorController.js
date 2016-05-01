@@ -14,7 +14,7 @@ app.controller('EditorController', ['$scope', '$http',
 
         $http({
           method  : 'POST',
-          url     : 'chinnnoo.xyz:8889/api/article/uid/1000000000',
+          url     : 'http://chinnnoo.xyz:8889/api/article/uid/1000000000',
           data    : data, //forms user object
           headers : {'Content-Type': 'application/x-www-form-urlencoded'}
          })
