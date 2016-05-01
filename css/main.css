@@ -114,6 +114,14 @@ a:link {
     border: none;
     border-color: rgba(0, 0, 0, 0.2);
 }
+
+.user-pic-lg {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: none;
+  border-color: rgba(0, 0, 0, 0.2);
+}
 .user-button {
     background-color: #ffffff;
     border: none;
@@ -145,7 +153,6 @@ a:link {
 .new-article-section {
     margin-top: 100px;
 }
-
 .post-btn {
   font-size: 16px;
   background: #4CAF50;
@@ -174,6 +181,11 @@ a:link {
 
 #submit-btn {
   width 15%;
+  padding: 10px;
+  color: white;
+  background-color: #4CAF50;
+  border: none;
+
 }
 
 #nprogress .bar {
@@ -194,4 +206,24 @@ a:link {
 
 .hide {
   visibility: hidden;
+}
+
+.follow-button {
+  background-color: transparent;
+  color: #4CAF50;
+  border: 1px solid #4CAF50;
+  outline: none;
+  padding: 6px;
+}
+
+.following-button {
+  color: #ffffff;
+  border: none;
+  outline: none;
+  padding: 6px;
+  background-color: #4CAF50;
+}
+
+.float-right {
+  float: right;
 }
