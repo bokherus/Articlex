@@ -22,7 +22,7 @@ var getLatestArticles = function(callback){
 
 var getLove = function(articleId, callback){
   var q = 'SELECT ' + Schema.Love.column.uid + ', '+ Schema.User.column.fname + ', ' + Schema.User.column.lname + ' ' +
-          'FROM ' + Schema.User.table + ' ' +
+          'FROM ' + Schema.User.table + ', ' + Schema.Love.table + ' ' + 
           'WHERE ' + Schema.Love.table + '.' + Schema.Love.column.aid + '=' + articleId + ' AND ' + Schema.Article.table + '.' + Schema.Love.column.uid + '=' + Schema.User.table +'.' + Schema.User.column.id +';';
   console.log(q);
   DbEditor.rawQuery(q, callback);
