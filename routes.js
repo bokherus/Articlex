@@ -73,6 +73,7 @@ module.exports = function(app, passport) {
 
     //POST signin
     app.post('/signin', function(req, res, next) {
+        console.log(req.body);
         passport.authenticate('local', {
                 successRedirect: '/#/',
                 failureRedirect: '/#/login'
@@ -80,7 +81,7 @@ module.exports = function(app, passport) {
             function(err, user, info) {
                 if (err) {
                     return; //render web with error message
-                }
+                  }
 
                 if (!user) {
                     return; //render web with info message
@@ -90,7 +91,8 @@ module.exports = function(app, passport) {
                     if (err) {
                         return; //render web with error message
                     } else {
-                        return res.redirect('/#/');
+                        console.log('login succuss' + user.username);
+                        res.redirect('/');
                     }
                 });
             })(req, res, next);
