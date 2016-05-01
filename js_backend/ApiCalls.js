@@ -21,9 +21,9 @@ var getLatestArticles = function(callback){
 };
 
 var getLove = function(articleId, callback){
-  var q = 'SELECT ' + Schema.Love.column.uid + ', '+ Schema.User.column.fname + ', ' + Schema.User.column.lname + ' ' +
-          'FROM ' + Schema.User.table + ', ' + Schema.Love.table + ' ' + 
-          'WHERE ' + Schema.Love.table + '.' + Schema.Love.column.aid + '=' + articleId + ' AND ' + Schema.Article.table + '.' + Schema.Love.column.uid + '=' + Schema.User.table +'.' + Schema.User.column.id +';';
+  var q = 'SELECT ' + Schema.Love.table + '.' + Schema.Love.column.uid + ', '+ Schema.User.column.fname + ', ' + Schema.User.column.lname + ' ' +
+          'FROM ' + Schema.User.table + ', ' + Schema.Love.table + ' ' +
+          'WHERE ' + Schema.Love.table + '.' + Schema.Love.column.aid + '=' + articleId + ' AND ' + Schema.Love.table + '.' + Schema.Love.column.uid + '=' + Schema.User.table +'.' + Schema.User.column.id +';';
   console.log(q);
   DbEditor.rawQuery(q, callback);
   // DbEditor.query(Schema.Love.table, [Schema.Love.column.uid, 'count(' + Schema.Love.column.aid +') as number'], [Schema.Love.column.aid+'='], [articleId], callback);
