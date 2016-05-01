@@ -12,7 +12,7 @@ var getArticle = function(id, callback){
 };
 
 var getLatestArticles = function(callback){
-  var q = 'SELECT articleId, username as author, content, createTime, title' + ' ' +
+  var q = 'SELECT articleId, username as author, content, createTime, title, authorId' + ' ' +
           'FROM ' + Schema.Article.table + ', ' + Schema.User.table + ' ' +
           'WHERE ' + Schema.Article.table + '.' + Schema.Article.column.authorId + '=' + Schema.User.table + '.' + Schema.User.column.id + ' ' +
           'ORDER BY ' + Schema.Article.column.time + ' DESC;';
