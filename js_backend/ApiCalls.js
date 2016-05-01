@@ -49,16 +49,16 @@ var postArticle = function(newArticleId ,userId, title, content, callback){
 };
 
 var getComments = function(articleId, callback){
-  var q = 'SELECT ' + Schema.Comment.column.commentId + ', ' + Schema.Comment.column.commentorId + ', ' + Schema.Comment.column.comment + ', ' + Schema.Comment.column.time + ' ' +
-          'FROM ' + Schema.Comment.table + ' ' +
-          'WHERE ' + Schema.Comment.column.aid + '=' + articleId + ';';
+  var q = 'SELECT ' + Schema.Comment.column.commentId + ', ' + Schema.User.column.fname + ', ' + Schema.User.column.lname + ', ' + Schema.Comment.column.comment + ', ' + Schema.Comment.column.time + ' ' +
+          'FROM ' + Schema.Comment.table + ', ' + Schema.User.table + ' ' +
+          'WHERE ' + Schema.Comment.column.aid + '=' + articleId + ' AND ' + Schema.Comment.column.commentorId + '=' + Schema.User.column.id + ';';
   console.log(q);
   DbEditor.rawQuery(q, callback);
   // DbEditor.query(Schema.Comment.table, [Schema.Comment.column.commentId, Schema.Comment.column.commentorId, Schema.Comment.column.comment, 'date_format(' + Schema.Comment.column.time + ', \'%e-%c-%Y %T\') as createTime'], [Schema.Comment.column.aid+'='], [articleId], callback);
 };
 
 var postComment = function(newCommentId, articleId, commentorId, comment, callback){
-  var q = 'INSERT INTO ' + Schema.Comment.table +
+  var q = 'INSERT INTO ' + Schema.Comment.table + ' ' +
           'VALUES (' + newCommentId + ', ' + articleId + ', ' + commentorId + ', ' + toString(comment) + ', NOW());';
   console.log(q);
   DbEditor.rawQuery(q, callback);
