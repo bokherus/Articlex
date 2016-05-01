@@ -8,7 +8,7 @@ app.factory('userinfo', function($http, $location){
     console.log('postLogin');
     $http({
       method: 'POST',
-      url: 'http://localhost:8889/signin',
+      url: 'http://chinnnoo.xyz:8889/signin',
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded'
       },
@@ -25,7 +25,7 @@ app.factory('userinfo', function($http, $location){
   function retrieveInfo(){
     $http({
       method: 'GET',
-      url: 'http://localhost:8889/api/userinfo/username/' + currentUsername,
+      url: 'http://chinnnoo.xyz:8889/api/userinfo/username/' + currentUsername,
     }).then(function(response){
       console.log(response);
       info = response.data;
