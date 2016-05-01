@@ -3,19 +3,24 @@ app.controller('EditorController', ['$scope', '$http',
         $scope.title = "";
         $scope.content = "";
 
+        $scope.formData = {};
         $scope.submitForm = function() {
-        var data = $.param({
-            json: JSON.stringify({
-                title: $scope.title,
-                content: $scope.content
-            })
-        });
+        // var data = $.param({
+        //     json: JSON.stringify({
+        //         title: $scope.title,
+        //         content: $scope.content
+        //     })
+        // });
+        var data = {
+          title: $scope.title,
+          content: $scope.content
+        };
         console.log(data);
 
         $http({
           method  : 'POST',
           url     : 'http://chinnnoo.xyz:8889/api/article/uid/1000000000',
-          data    : data, //forms user object
+          data    : $.param($scope.formData),
           headers : {'Content-Type': 'application/x-www-form-urlencoded'}
          })
           .success(function(data) {
@@ -62,6 +67,10 @@ app.controller('EditorController', ['$scope', '$http',
         $scope.$on('$routeChangeSuccess', function() {
             console.log("Scrolled to the top of the article");
             window.scrollTo(0, 0);
+        });
+        $scope.$on('$viewContentLoaded', function(){
+          //Here your view content is fully loaded !!
+          NProgress.done();
         });
     }
 ]);

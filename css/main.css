@@ -65,7 +65,6 @@ a:link {
 }
 .article-listitem {
     padding: 18px;
-    margin-bottom: 20px;
 }
 .article-listitem-author {
     margin: 0;
@@ -187,4 +186,10 @@ a:link {
 
 .hide {
   visibility: hidden;
+}
+.ellipsis {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
 }

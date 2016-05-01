@@ -13,6 +13,13 @@ app.controller('MainController',[
 
   });
 
+  $scope.getTruncatedContent = function(data) {
+    data = data.content;
+    var wanted_count = 100;
+    var cutstrObj = new CutString(data, wanted_count);
+    return cutstrObj.cut();
+  };
+
   $scope.$on('$viewContentLoaded', function(){
     //Here your view content is fully loaded !!
     NProgress.done();

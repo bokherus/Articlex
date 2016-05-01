@@ -1,8 +1,8 @@
 <div class="new-article-section content-layout">
   <form ng-submit="submitForm()">
       <button class="post-btn" type="submit">POST</button>
-      <h3><input id="title-input" ng-model="title" type="text" placeholder="Your title here"></input></h3>
-     <div data-placeholder="Begin with your story here" ui-tinymce="tinymceOptions" ng-model="content"></div>
+      <h3><input id="title-input" ng-model="formData.title" type="text" placeholder="Your title here"></input></h3>
+     <div data-placeholder="Begin with your story here" ui-tinymce="tinymceOptions" ng-model="formData.content"></div>
      <input class="hide" name="content"></input>
   </form>
 </div>

@@ -25,7 +25,7 @@
             <a href="#/articles/{{$index}}">
               <!-- <div class="article-listitem-image" ng-style="{'background-image':'url({{article.url}})'}" style="height: 200px"></div> -->
                 <h2 class="article-listitem-title">{{ article.title }}</h2>
-                <p class="article-listitem-content">Over fact all son tell this any his. No insisted confined of weddings to returned to debating rendered. </p>
+                <p class="article-listitem-content" ng-bind-html="getTruncatedContent(article)"></p>
             </a>
             <div class="row article-listitem-panel">
                 <div class="col-md-10">
