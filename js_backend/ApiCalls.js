@@ -112,6 +112,8 @@ var getFollowings = function(userId, callback){
 var postFollowing = function(userId, followingId, callback){
   var q = 'INSERT INTO tbl_follows ' +
           'VALUES(' + userId + ', ' + followingId + ');';
+  console.log(q);
+  DbEditor.rawQuery(q, callback);
 };
 
 

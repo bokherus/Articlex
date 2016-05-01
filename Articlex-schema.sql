@@ -40,6 +40,7 @@ CREATE TABLE tbl_comments(
 CREATE TABLE tbl_follows(
   uid int not null,
   following int not null,
-  FOREIGN KEY(uid, following) REFERENCES tbl_users(uid, uid);
+  FOREIGN KEY(uid) REFERENCES tbl_users(uid),
+  FOREIGN KEY(following) REFERENCES tbl_users(uid),
   PRIMARY KEY(uid, following)
 );
