@@ -42,7 +42,7 @@ var comment = {
 };
 
 var tag = {
-  table: 'tbl_tags',
+  table: 'tbl_follows',
   column: {
     tagName: 'tagName',
     aid: 'articleId'

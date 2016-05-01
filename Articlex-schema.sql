@@ -37,9 +37,9 @@ CREATE TABLE tbl_comments(
   check (commentId>=1000000000)
 );
 
-CREATE TABLE tbl_tags(
-  tagName varchar(255) not null,
-  articleId int not null,
-  FOREIGN KEY(articleId) REFERENCES tbl_articles(articleId),
-  PRIMARY KEY (tagName, articleId);
+CREATE TABLE tbl_follows(
+  uid int not null,
+  following int not null,
+  FOREIGN KEY(uid, following) REFERENCES tbl_users(uid, uid);
+  PRIMARY KEY(uid, following)
 );

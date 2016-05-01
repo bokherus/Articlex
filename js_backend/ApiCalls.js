@@ -65,23 +65,6 @@ var postComment = function(newCommentId, articleId, commentorId, comment, callba
   DbEditor.rawQuery(q, callback);
 };
 
-var getTagInArticle = function(articleId, callback){
-  var q = 'SELECT ' + Schema.Tag.column.tagName + ' ' +
-          'FROM ' + Schema.Tag.table + ' ' +
-          'WHERE ' + Schema.Tag.column.articleId + '=' + articleId + ';';
-  console.log(q);
-  DbEditor.rawQuery(q, callback);
-  // DbEditor.query(Schema.Tag.table, [Schema.Tag.column.tagName], [Schema.Tag.column.articleId+'='], articleId, callback);
-};
-
-var getTaggedArticles = function(tagName, callback){
-  var q = 'SELECT ' + Schema.Article.column.id + ', ' + Schema.Article.column.title + ', ' + Schema.Article.column.content + ', ' + Schema.Article.column.time + ' ' +
-          'FROM ' + Schema.Article.table + ', ' + Schema.Tag.table + ' ' +
-          'WHERE ' + Schema.Tag.column.tagName + '=' + tagName + ' AND ' + Schema.Tag.column.articleId + '=' + Schema.Article.column.id + ';';
-  console.log(q);
-  DbEditor.rawQuery(q, callback);
-};
-
 var getUserInfo = function(username, callback){
   var q = 'SELECT ' + Schema.User.column.id + ', ' + Schema.User.column.username + ', ' + Schema.User.column.fname + ', ' + Schema.User.column.lname + ' ' +
           'FROM ' + Schema.User.table + ' '+
@@ -110,6 +93,28 @@ var postTagFromArticle = function(articleId, tags, callback){
 };
 
 
+var getFollowingsArticle = function(userId, callback){
+  var q = 'SELECT tbl_articles.articleId, tbl_users.username, tbl_users.firstName, tbl_users.lastName, tbl_articles.content, tbl_articles.title, tbl_articles.createTime ' +
+          'FROM tbl_articles, tbl_users, tbl_follows ' +
+          'WHERE tbl_follows.uid=' + userId + ' AND tbl_follows.following=tbl_articles.authorId AND tbl_follows.following=tbl_users.uid';
+  console.log(q);
+  DbEditor.rawQuery(q, callback);
+};
+
+var getFollowings = function(userId, callback){
+  var q = 'SELECT tbl_users.uid, tbl_users.username, tbl_users.firstName, tbl_users.lastName ' +
+          'FROM tbl_users, tbl_follows ' +
+          'WHERE tbl_follows.uid=' + userId + ' AND tbl_follows.following=tbl_users.uid;';
+  console.log(q);
+  DbEditor.rawQuery(q, callback);
+};
+
+var postFollowing = function(userId, followingId, callback){
+  var q = 'INSERT INTO tbl_follows ' +
+          'VALUES(' + userId + ', ' + followingId + ');';
+};
+
+
 
 function toString(s){
   return '\''+s+'\'';
@@ -124,7 +129,8 @@ module.exports = {
   postArticle: postArticle,
   getCommentsOfArticle: getComments,
   postCommentsToArticle: postComment,
-  getTagInArticle: getTagInArticle,
-  getTaggedArticles: getTaggedArticles,
-  getUserInfo: getUserInfo
+  getUserInfo: getUserInfo,
+  getFollowingsArticle: getFollowingsArticle,
+  getFollowings: getFollowings,
+  postFollowing: postFollowing
 };

@@ -218,6 +218,41 @@ module.exports = function(app, passport) {
       }
     });
 
+    app.get('/api/article/following/:userId', function(req, res, next) {
+      if(req.isAuthenticated() || debugMode){
+        ApiCalls.getFollowingsArticle(req.params.userId, function(err, rows){
+          if(!err){
+            res.json(rows);
+          }
+        });
+      } else {
+        res.redirect('/');
+      }
+    });
 
+    app.get('/api/following/:userId', function(req, res, next) {
+      if(req.isAuthenticated() || debugMode){
+        ApiCalls.getFollowings(req.params.userId, function(err, rows){
+          if(!err){
+            res.json(rows);
+          }
+        });
+      } else {
+        res.redirect('/');
+      }
+    });
+
+    app.post('/api/follow/:userId/following/:followingId', function(req, res, next) {
+      if(req.isAuthenticated() || debugMode){
+        ApiCalls.postFollowing(req.params.userId, req.params.followingId, function(err, rows){
+            if(!err){
+              res.json(rows);
+            }
+        });
+      } else {
+        res.redirect('/');
+      }
+
+    });
 
 };
