@@ -65,6 +65,7 @@ app.use('/images', express.static(path.join(__dirname, './images')));
 app.use('/node_modules', express.static(path.join(__dirname, './node_modules')));
 app.use('/views', express.static(path.join(__dirname, './views')));
 
+
 require('./routes-api')(app, passport);
 require('./routes')(app, passport);
 
