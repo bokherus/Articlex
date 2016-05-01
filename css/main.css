@@ -167,6 +167,15 @@ a:link {
   border: none;
 }
 
+#comment-input {
+  width: 85%;
+  padding: 10px;
+}
+
+#submit-btn {
+  width 15%;
+}
+
 #nprogress .bar {
   background: #00E676;
 }
@@ -185,10 +194,4 @@ a:link {
 
 .hide {
   visibility: hidden;
-}
-.ellipsis {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    -o-text-overflow: ellipsis;
 }

@@ -9,9 +9,8 @@ app.controller('MainController',[
     $scope.class = "fa fa-heart-o fa-lg";
     $scope.articles = data;
     for (var i in $scope.articles) {
-      console.log($scope.articles[i]);
       $scope.articles[i].class = "fa fa-heart-o fa-lg";
-      $scope.articles[i].loveCount = 50;
+      getLove($scope.articles[i].articleId, i);
     }
     $scope.userImage = "https://image.freepik.com/free-icon/user-male-shape-in-a-circle--ios-7-interface-symbol_318-39025.png";
     $scope.loveCount = 50;
@@ -20,19 +19,31 @@ app.controller('MainController',[
   });
 
   $scope.love = function(index) {
-    console.log("LOveeeeee");
-
    if ($scope.articles[index].class === "fa fa-heart-o fa-lg"){
      $scope.articles[index].class = "fa fa-heart fa-lg";
      $scope.articles[index].loveCount++;
    }
-
    else {
       $scope.articles[index].class = "fa fa-heart-o fa-lg";
       $scope.articles[index].loveCount--;
    }
-
   };
+
+  var getLove = function(articleId , i) {
+    $http.get('http://chinnnoo.xyz:8889/api/loves/article/' + articleId)
+           .success(function(data) {
+             $scope.articles[i].love = data;
+             console.log(data);
+             $scope.articles[i].loveCount = data.length;
+             return data;
+           })
+           .error(function(data) {
+             console.log("Failed azzz");
+             return data;
+           });
+
+    console.log($scope.comments);
+  }
 
   $scope.getTruncatedContent = function(data) {
     data = data.content;
