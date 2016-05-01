@@ -11,7 +11,8 @@ app.controller('ArticleController', ['$scope', 'articles', '$routeParams', '$htt
     }
     console.log($scope.img);
     getComment();
-    $scope.url = 'http://chinnnoo.xyz:8889/api/comment/aid/' + $scope.detail.articleId + '/commentorId/1000000005';
+    $scope.postCommentUrl = 'http://chinnnoo.xyz:8889/api/comment/aid/' + $scope.detail.articleId + '/commentorId/1000000005';
+    $scope.postFollowUrl = 'http://chinnnoo.xyz:8889/api/follow/1000000004/following/1000000006'
   });
 
   $scope.formData = {};
@@ -27,12 +28,27 @@ app.controller('ArticleController', ['$scope', 'articles', '$routeParams', '$htt
     }
   };
 
+  $scope.submitFollow = function() {
+    $http({
+      method  : 'POST',
+      url     : $scope.postFollowUrl,
+      headers : {'Content-Type': 'application/x-www-form-urlencoded'}
+     })
+      .success(function(data) {
+        console.log("sent");
+
+        $scope.$apply(function() {
+            $scope.comments.push(data);
+        });
+      });
+  };
+
 
   $scope.submitComment = function() {
     console.log($scope.url);
   $http({
     method  : 'POST',
-    url     : $scope.url,
+    url     : $scope.postCommentUrl,
     data    : $.param($scope.formData),
     headers : {'Content-Type': 'application/x-www-form-urlencoded'}
    })

@@ -4,9 +4,10 @@ app.controller('FollowingController',[
   'userinfo',
   function($scope, $http, userinfo) {
 
-  $http.get('http://chinnnoo.xyz:8889/api/article/latest')
+  $http.get('http://chinnnoo.xyz:8889/api/article/following/1000000004')
            .success(function(data) {
-             $scope.articles = data
+             console.log("data");
+             $scope.articles = data;
              $scope.userImage = "https://image.freepik.com/free-icon/user-male-shape-in-a-circle--ios-7-interface-symbol_318-39025.png";
              for (var i in $scope.articles) {
                $scope.articles[i].class = "fa fa-heart-o fa-lg";
@@ -15,6 +16,7 @@ app.controller('FollowingController',[
              return data;
            })
            .error(function(data) {
+             console.log("Failed");
              return data;
            });
 
