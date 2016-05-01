@@ -49,19 +49,10 @@ var tag = {
   }
 };
 
-var articleImage = {
-  table: 'tbl_articlesImage',
-  column: {
-    articleId: 'articleId',
-    url: 'image'
-  }
-};
-
 module.exports = {
   User: user,
   Article: article,
   Love: love,
   Comment: comment,
-  Tag: tag,
-  ArticleImage: articleImage
+  Tag: tag
 };

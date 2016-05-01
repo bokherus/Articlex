@@ -25,11 +25,6 @@ CREATE TABLE tbl_loves(
   PRIMARY KEY(articleId, uid)
 );
 
-CREATE TABLE tbl_articlesImage(
-  articleId int primary key,
-  image text not null,
-  FOREIGN KEY(articleId) REFERENCES tbl_articles(articleId)
-);
 
 CREATE TABLE tbl_comments(
   commentId int primary key ,
