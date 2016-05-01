@@ -20,7 +20,7 @@ var getLatestArticles = function(callback){
 };
 
 var getLove = function(articleId, callback){
-  var q = 'SELECT ' + Schema.Love.column.uid + ', concat(' + Schema.User.column.fname + ', ' + a(' ') + ', ' + Schema.User.column.lname +  ') as fullname ' +
+  var q = 'SELECT ' + Schema.Love.column.uid + ', concat(' + Schema.User.column.fname + ', ' + toString(' ') + ', ' + Schema.User.column.lname +  ') as fullname ' +
           'FROM ' + Schema.User.table + ' ' +
           'WHERE ' + Schema.Love.table + '.' + Schema.Love.column.aid + '=' + articleId + ' AND ' + Schema.Article.table + '.' + Schema.Article.column.id + '=' + Schema.Love.col +';';
   console.log(q);
@@ -59,7 +59,7 @@ var getComments = function(articleId, callback){
 
 var postComment = function(newCommentId, articleId, commentorId, comment, callback){
   var q = 'INSERT INTO ' + Schema.Comment.table +
-          'VALUES (' + newCommentId + ', ' + articleId + ', ' + commentorId + ', ' + a(comment) + ', NOW());';
+          'VALUES (' + newCommentId + ', ' + articleId + ', ' + commentorId + ', ' + toString(comment) + ', NOW());';
   console.log(q);
   DbEditor.rawQuery(q, callback);
 };
@@ -82,16 +82,16 @@ var getTaggedArticles = function(tagName, callback){
 };
 
 var getUserInfo = function(username, callback){
-  var q = 'SELECT ' + Schema.User.column.id + ', ' + Schema.User.column.username + ', ' + Schema.User.column.fname + ', ' + Schema.User.column.lnamme + ' ' +
-          'FROM ' + Schema.User.table +
-          'WHERE ' + Schema.User.column.username + '=' + username + ';';
+  var q = 'SELECT ' + Schema.User.column.id + ', ' + Schema.User.column.username + ', ' + Schema.User.column.fname + ', ' + Schema.User.column.lname + ' ' +
+          'FROM ' + Schema.User.table + ' '+
+          'WHERE ' + Schema.User.column.username + '=' + toString(username) + ';';
   console.log(q);
   DbEditor.rawQuery(q, callback);
 };
 
 var postArticleImage = function(articleId, imageURL, callback){
   var q = 'INSERT INTO ' + Schema.ArticleImage.table + ' ' +
-          'VAULES (' + articleId + ', ' + a(imageURL) + ');';
+          'VAULES (' + articleId + ', ' + toString(imageURL) + ');';
   console.log(q);
   DbEditor.rawQuery(q, callback);
 };
@@ -100,7 +100,7 @@ var postTagFromArticle = function(articleId, tags, callback){
   var q = 'INSERT INTO ' + Schema.Tag.table + ' ' +
           'VALUES ';
   for(var i = 0; i < tags.length; i++) {
-    q += '( ' + a(tags[i]) + ', ' + articleId + ')';
+    q += '( ' + toString(tags[i]) + ', ' + articleId + ')';
     if(i < tags.length - 1) q += ',';
     else q += ';';
   }
@@ -110,7 +110,7 @@ var postTagFromArticle = function(articleId, tags, callback){
 
 
 
-function a(s){
+function toString(s){
   return '\''+s+'\'';
 }
 
@@ -124,5 +124,6 @@ module.exports = {
   getCommentsOfArticle: getComments,
   postCommentsToArticle: postComment,
   getTagInArticle: getTagInArticle,
-  getTaggedArticles: getTaggedArticles
+  getTaggedArticles: getTaggedArticles,
+  getUesrInfo: getUserInfo
 };

@@ -209,6 +209,7 @@ module.exports = function(app, passport) {
       if(req.isAuthenticated() || debugMode){
         ApiCalls.getUserInfo(req.params.username, function(err, rows){
           if(!err){
+            console.log('-------------------------\n-' + rows);
             res.json(rows[0]);
           }
         });
