@@ -5,18 +5,6 @@ app.controller('EditorController', ['$scope', '$http',
 
         $scope.formData = {};
         $scope.submitForm = function() {
-        // var data = $.param({
-        //     json: JSON.stringify({
-        //         title: $scope.title,
-        //         content: $scope.content
-        //     })
-        // });
-        var data = {
-          title: $scope.title,
-          content: $scope.content
-        };
-        console.log(data);
-
         $http({
           method  : 'POST',
           url     : 'http://chinnnoo.xyz:8889/api/article/uid/1000000000',
@@ -25,7 +13,6 @@ app.controller('EditorController', ['$scope', '$http',
          })
           .success(function(data) {
             console.log("sent");
-
           });
         };
 
