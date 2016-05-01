@@ -14,6 +14,7 @@ var app = express();
 var cors = require('cors');
 
 passport.use(new LocalStrategy(function(username, password, done) {
+  console.log("passport" + username);
   DbEditor.query(Schema.User.table, ['*'], [Schema.User.column.username+'='], ['\''+username+'\''], function(err, rows){
     console.log(err);
     console.log(rows);
@@ -64,8 +65,9 @@ app.use('/images', express.static(path.join(__dirname, './public/images')));
 app.use('/node_modules', express.static(path.join(__dirname, './node_modules')));
 app.use('/views', express.static(path.join(__dirname, './views')));
 
-require('./routes')(app, passport);
 require('./routes-api')(app, passport);
+require('./routes')(app, passport);
+
 
 
 

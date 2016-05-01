@@ -1,37 +1,45 @@
-app.factory('userinfo', function($http){
+app.factory('userinfo', function($http, $location){
 
   var currentUsername = '';
+  var info = {};
 
   function postLogin(username, password, callback){
-    var data = $.param({
-      json: JSON.stringify({
-        username: username,
-        password: password
-      })
-    });
     currentUsername = username;
     console.log('postLogin');
     $http({
       method: 'POST',
-      url: 'chinnnoo.xyz:8889/signin',
+      url: 'http://localhost:8889/signin',
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded'
       },
-      data: { username: username, password: password }
+      data: $.param({username: username, password: password})
     }).then(function(response){
-      console.log(response+'2');
+      retrieveInfo();
+      $location.path("/");
     }).then(function(response){
-      console.log(response+'1');
+      console.log(response);
     });
 
   }
 
-  function getUsername(){
-    return currentUsername;
+  function retrieveInfo(){
+    $http({
+      method: 'GET',
+      url: 'http://localhost:8889/api/userinfo/username/' + currentUsername,
+    }).then(function(response){
+      console.log(response);
+      info = response.data;
+    }).then(function(response){
+      console.log(response);
+    });
+  }
+
+  function getInfo(){
+    return info;
   }
 
   return {
     postLogin: postLogin,
-    getUsername: getUsername
+    getInfo: getInfo
   };
 });
