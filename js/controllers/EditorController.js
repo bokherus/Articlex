@@ -1,10 +1,29 @@
-app.controller('EditorController', ['$scope',
-    function($scope) {
-        $scope.show = function() {
-            console.log($scope.content);
+app.controller('EditorController', ['$scope', '$http',
+    function($scope, $http) {
+        $scope.title = "";
+        $scope.content = "";
+
+        $scope.submitForm = function() {
+        var data = $.param({
+            json: JSON.stringify({
+                title: $scope.title,
+                content: $scope.content
+            })
+        });
+        console.log(data);
+
+        $http({
+          method  : 'POST',
+          url     : 'chinnnoo.xyz:8889/api/article/uid/1000000000',
+          data    : data, //forms user object
+          headers : {'Content-Type': 'application/x-www-form-urlencoded'}
+         })
+          .success(function(data) {
+            console.log("sent");
+
+          });
         };
 
-        $scope.content = "";
 
         $scope.tinymceOptions = {
             onChange: function(e) {

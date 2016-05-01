@@ -1,7 +1,7 @@
 <div class="new-article-section content-layout">
-  <form action="chinnnoo.xyz:8889/api/article/uid/1000000000" method="post">
-      <button class="post-btn" ng-click="show()">POST</button>
-      <h3><input id="title-input" name="title" type="text" placeholder="Your title here"></input></h3>
+  <form ng-submit="submitForm()">
+      <button class="post-btn" type="submit">POST</button>
+      <h3><input id="title-input" ng-model="title" type="text" placeholder="Your title here"></input></h3>
      <div data-placeholder="Begin with your story here" ui-tinymce="tinymceOptions" ng-model="content"></div>
      <input class="hide" name="content"></input>
   </form>
