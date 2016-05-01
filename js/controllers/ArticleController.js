@@ -2,6 +2,8 @@ app.controller('ArticleController', ['$scope', 'articles', '$routeParams', '$htt
   function($scope, articles, $routeParams, $http, userinfo) {
     articles.success(function(data) {
     $scope.detail = data[$routeParams.id];
+    $scope.class = 'follow-button';
+    $scope.followButton = "Follow";
     $scope.content = $scope.detail.content;
     $scope.userImage = "https://image.freepik.com/free-icon/user-male-shape-in-a-circle--ios-7-interface-symbol_318-39025.png";
     if ($scope.detail.img !== undefined) {
@@ -13,6 +15,17 @@ app.controller('ArticleController', ['$scope', 'articles', '$routeParams', '$htt
   });
 
   $scope.formData = {};
+
+  $scope.follow = function() {
+    if ($scope.class === "follow-button") {
+          $scope.class = "following-button";
+          $scope.followButton = "Following";
+    }
+    else {
+        $scope.class = "follow-button";
+        $scope.followButton = "Follow";
+    }
+  };
 
 
   $scope.submitComment = function() {
@@ -31,6 +44,7 @@ app.controller('ArticleController', ['$scope', 'articles', '$routeParams', '$htt
       });
     });
   };
+
 
   var getComment = function () {
     $http.get('http://chinnnoo.xyz:8889/api/comment/aid/' + $scope.detail.articleId)
