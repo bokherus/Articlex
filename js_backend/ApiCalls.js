@@ -21,7 +21,7 @@ var getLatestArticles = function(callback){
 };
 
 var getLove = function(articleId, callback){
-  var q = 'SELECT ' + Schema.Love.column.uid + Schema.User.column.fname + ', ' + Schema.User.column.lname + ' ' +
+  var q = 'SELECT ' + Schema.Love.column.uid + ', '+ Schema.User.column.fname + ', ' + Schema.User.column.lname + ' ' +
           'FROM ' + Schema.User.table + ' ' +
           'WHERE ' + Schema.Love.table + '.' + Schema.Love.column.aid + '=' + articleId + ' AND ' + Schema.Article.table + '.' + Schema.Love.column.uid + '=' + Schema.User.table +'.' + Schema.User.column.id +';';
   console.log(q);
@@ -77,7 +77,7 @@ var getTagInArticle = function(articleId, callback){
 var getTaggedArticles = function(tagName, callback){
   var q = 'SELECT ' + Schema.Article.column.id + ', ' + Schema.Article.column.title + ', ' + Schema.Article.column.content + ', ' + Schema.Article.column.time + ' ' +
           'FROM ' + Schema.Article.table + ', ' + Schema.Tag.table + ' ' +
-          'WHERE ' + Schema.Tag.column.tagName + '=' + tagName + ' AND ' + Schema.Tag.column.articleId + '=' + Schema.Article.column.id;
+          'WHERE ' + Schema.Tag.column.tagName + '=' + tagName + ' AND ' + Schema.Tag.column.articleId + '=' + Schema.Article.column.id + ';';
   console.log(q);
   DbEditor.rawQuery(q, callback);
 };

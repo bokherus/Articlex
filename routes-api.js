@@ -196,6 +196,7 @@ module.exports = function(app, passport) {
         ApiCalls.postCommentsToArticle(newCommentId, req.params.articleId, req.params.commentorId, req.body.comment, function(err, rows){
           if(!err){
             incrementCommentId();
+            res.json(rows);
           } else {
             console.log(err);
           }
