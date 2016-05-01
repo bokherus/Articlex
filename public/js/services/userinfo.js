@@ -1,6 +1,7 @@
 app.factory('userinfo', function($http, $location){
 
   var currentUsername = '';
+  var info = {};
 
   function postLogin(username, password, callback){
     currentUsername = username;
@@ -13,6 +14,7 @@ app.factory('userinfo', function($http, $location){
       },
       data: $.param({username: username, password: password})
     }).then(function(response){
+      retrieveInfo();
       $location.path("/");
     }).then(function(response){
       console.log(response);
@@ -20,12 +22,24 @@ app.factory('userinfo', function($http, $location){
 
   }
 
-  function getUsername(){
-    return currentUsername;
+  function retrieveInfo(){
+    $http({
+      method: 'GET',
+      url: 'http://localhost:8889/api/userinfo/username/' + currentUsername,
+    }).then(function(response){
+      console.log(response);
+      info = response.data;
+    }).then(function(response){
+      console.log(response);
+    });
+  }
+
+  function getInfo(){
+    return info;
   }
 
   return {
     postLogin: postLogin,
-    getUsername: getUsername
+    getInfo: getInfo
   };
 });

@@ -125,5 +125,5 @@ module.exports = {
   postCommentsToArticle: postComment,
   getTagInArticle: getTagInArticle,
   getTaggedArticles: getTaggedArticles,
-  getUesrInfo: getUserInfo
+  getUserInfo: getUserInfo
 };
