@@ -30,10 +30,10 @@
             <div class="row article-listitem-panel">
                 <div class="col-md-10">
                     <button class="button-love">
-                        <i class="fa fa-heart-o fa-lg" aria-hidden="true"></i>
-                        <!-- <i class="fa fa-heart fa-lg" aria-hidden="true"></i> -->
+                        <i ng-class="article.class" aria-hidden="true" ng-click="love($index)"></i>
+                        <!-- <i class="fa fa-heart fa-lg" aria-hidden="true" ng-click="love()"></i> -->
                     </button>
-                    <button class="button-love-text">{{ loves }}</button>
+                    <button class="button-love-text">{{ article.loveCount }}</button>
                 </div>
             </div>
         </div>
