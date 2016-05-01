@@ -22,7 +22,7 @@ var getLatestArticles = function(callback){
 var getLove = function(articleId, callback){
   var q = 'SELECT ' + Schema.Love.column.uid + ', concat(' + Schema.User.column.fname + ', ' + toString(' ') + ', ' + Schema.User.column.lname +  ') as fullname ' +
           'FROM ' + Schema.User.table + ' ' +
-          'WHERE ' + Schema.Love.table + '.' + Schema.Love.column.aid + '=' + articleId + ' AND ' + Schema.Article.table + '.' + Schema.Article.column.id + '=' + Schema.Love.col +';';
+          'WHERE ' + Schema.Love.table + '.' + Schema.Love.column.aid + '=' + articleId + ' AND ' + Schema.Article.table + '.' + Schema.Love.column.uid + '=' + Schema.User.table +'.' + Schema.User.column.id +';';
   console.log(q);
   DbEditor.rawQuery(q, callback);
   // DbEditor.query(Schema.Love.table, [Schema.Love.column.uid, 'count(' + Schema.Love.column.aid +') as number'], [Schema.Love.column.aid+'='], [articleId], callback);
@@ -49,7 +49,7 @@ var postArticle = function(newArticleId ,userId, title, content, callback){
 };
 
 var getComments = function(articleId, callback){
-  var q = 'SELECT ' + Schema.Comment.column.commentId + ', ' + Schema.Comment.column.commentorId + ', ' + Schema.Comment.column.comment + ', date_format( ' + Schema.Comment.column.time + ', \'%e-%c-%Y %T\') as createTime' +
+  var q = 'SELECT ' + Schema.Comment.column.commentId + ', ' + Schema.Comment.column.commentorId + ', ' + Schema.Comment.column.comment + ', ' + Schema.Comment.column.time + ' ' +
           'FROM ' + Schema.Comment.table + ' ' +
           'WHERE ' + Schema.Comment.column.aid + '=' + articleId + ';';
   console.log(q);
