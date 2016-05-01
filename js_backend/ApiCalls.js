@@ -94,7 +94,7 @@ var postTagFromArticle = function(articleId, tags, callback){
 
 
 var getFollowingsArticle = function(userId, callback){
-  var q = 'SELECT tbl_articles.articleId, tbl_users.username, tbl_users.firstName, tbl_users.lastName, tbl_articles.content, tbl_articles.title, tbl_articles.createTime ' +
+  var q = 'SELECT tbl_articles.articleId, tbl_users.username as author, tbl_users.firstName, tbl_users.lastName, tbl_articles.content, tbl_articles.title, tbl_articles.createTime, tbl_articles.authorId ' +
           'FROM tbl_articles, tbl_users, tbl_follows ' +
           'WHERE tbl_follows.uid=' + userId + ' AND tbl_follows.following=tbl_articles.authorId AND tbl_follows.following=tbl_users.uid';
   console.log(q);
