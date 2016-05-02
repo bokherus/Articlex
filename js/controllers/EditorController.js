@@ -1,18 +1,21 @@
-app.controller('EditorController', ['$scope', '$http',
-    function($scope, $http) {
+app.controller('EditorController', ['$scope', '$http', 'userinfo', '$location',
+    function($scope, $http, userinfo, $location) {
         $scope.title = "";
         $scope.content = "";
+
+        var uid = userinfo.getInfo.uid;
 
         $scope.formData = {};
         $scope.submitForm = function() {
         $http({
           method  : 'POST',
-          url     : 'http://chinnnoo.xyz:8889/api/article/uid/1000000000',
+          url     : 'http://chinnnoo.xyz:8889/api/article/uid/' + uid,
           data    : $.param($scope.formData),
           headers : {'Content-Type': 'application/x-www-form-urlencoded'}
          })
           .success(function(data) {
             console.log("sent");
+            $location.path("#/");
           });
         };
 
@@ -45,7 +48,7 @@ app.controller('EditorController', ['$scope', '$http',
             },
             inline: true,
             menubar: false,
-            toolbar: 'styleselect | undo redo | bold italic | link image',
+            toolbar: 'styleselect | bold italic | link image',
             plugins: 'advlist autolink link image lists charmap',
             skin: 'lightgray',
             theme: 'modern'

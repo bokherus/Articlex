@@ -4,6 +4,7 @@ app.controller('ArticleController', ['$scope', 'articles', '$routeParams', '$htt
     $scope.detail = data[$routeParams.id];
     $scope.class = 'follow-button';
     $scope.followButton = "Follow";
+
     $scope.content = $scope.detail.content;
     $scope.userImage = "https://image.freepik.com/free-icon/user-male-shape-in-a-circle--ios-7-interface-symbol_318-39025.png";
     if ($scope.detail.img !== undefined) {
@@ -11,8 +12,8 @@ app.controller('ArticleController', ['$scope', 'articles', '$routeParams', '$htt
     }
     console.log($scope.img);
     getComment();
-    $scope.postCommentUrl = 'http://chinnnoo.xyz:8889/api/comment/aid/' + $scope.detail.articleId + '/commentorId/1000000005';
-    $scope.postFollowUrl = 'http://chinnnoo.xyz:8889/api/follow/1000000004/following/1000000006'
+    $scope.postCommentUrl = 'http://chinnnoo.xyz:8889/api/comment/aid/' + $scope.detail.articleId + '/commentorId/' + userinfo.getInfo.uid;
+    $scope.postFollowUrl = 'http://chinnnoo.xyz:8889/api/follow/' + userinfo.getInfo.uid +'/following/' +$scope.detail.authorId;
   });
 
   $scope.formData = {};
@@ -21,6 +22,7 @@ app.controller('ArticleController', ['$scope', 'articles', '$routeParams', '$htt
     if ($scope.class === "follow-button") {
           $scope.class = "following-button";
           $scope.followButton = "Following";
+          submitFollow();
     }
     else {
         $scope.class = "follow-button";
@@ -28,18 +30,14 @@ app.controller('ArticleController', ['$scope', 'articles', '$routeParams', '$htt
     }
   };
 
-  $scope.submitFollow = function() {
+  var submitFollow = function() {
     $http({
       method  : 'POST',
       url     : $scope.postFollowUrl,
       headers : {'Content-Type': 'application/x-www-form-urlencoded'}
      })
       .success(function(data) {
-        console.log("sent");
-
-        $scope.$apply(function() {
-            $scope.comments.push(data);
-        });
+        console.log("sent follow");
       });
   };
 

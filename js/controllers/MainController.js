@@ -22,10 +22,12 @@ app.controller('MainController',[
    if ($scope.articles[index].class === "fa fa-heart-o fa-lg") {
      $scope.articles[index].class = "fa fa-heart fa-lg";
      $scope.articles[index].loveCount++;
+     postLove($scope.articles[index].articleId, index);
    }
    else {
       $scope.articles[index].class = "fa fa-heart-o fa-lg";
       $scope.articles[index].loveCount--;
+      deleteLove($scope.articles[index].articleId, index);
    }
   };
 
@@ -40,6 +42,28 @@ app.controller('MainController',[
              return data;
            });
 
+  };
+
+  var postLove = function(articleId, i) {
+    $http({
+      method  : 'POST',
+      url     : 'http://chinnnoo.xyz:8889/api/loves/aid/' + articleId + '/uid/' + userId.getInfo.uid,
+      headers : {'Content-Type': 'application/x-www-form-urlencoded'}
+    })
+    .success(function(data) {
+      console.log("postedLove!");
+    });
+  };
+
+  var deleteLove = function(articleId, i) {
+    $http({
+      method  : 'DELETE',
+      url     : 'http://chinnnoo.xyz:8889/api/loves/aid/' + articleId + '/uid/' + userId.getInfo.uid,
+      headers : {'Content-Type': 'application/x-www-form-urlencoded'}
+    })
+    .success(function(data) {
+      console.log("DeletedLove");
+    });
   };
 
   $scope.getTruncatedContent = function(data) {
