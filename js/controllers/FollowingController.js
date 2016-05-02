@@ -4,7 +4,7 @@ app.controller('FollowingController',[
   'userinfo',
   function($scope, $http, userinfo) {
 
-  $http.get('http://chinnnoo.xyz:8889/api/article/following/1000000004')
+  $http.get('http://chinnnoo.xyz:8889/api/article/following/' + userinfo.getInfo().uid)
            .success(function(data) {
              console.log("data");
              $scope.articles = data;
