@@ -18,10 +18,6 @@ app.config(function ($routeProvider) {
       controller: 'EditorController',
       templateUrl: 'views/new.html'
     })
-    .when('/register', {
-      controller: 'MainController',
-      templateUrl: 'views/register.html'
-    })
     .when('/login', {
       controller: 'LoginController',
       templateUrl: 'views/login.html'
