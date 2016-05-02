@@ -1,5 +1,5 @@
-app.controller('ArticleController', ['$scope', 'articles', '$routeParams', '$http', 'userinfo',
-  function($scope, articles, $routeParams, $http, userinfo) {
+app.controller('ArticleController', ['$scope', 'articles', '$routeParams', '$http', 'userinfo', '$location',
+  function($scope, articles, $routeParams, $http, userinfo, $location) {
     articles.success(function(data) {
     $scope.detail = data[$routeParams.id];
     $scope.class = 'follow-button';
@@ -56,6 +56,7 @@ app.controller('ArticleController', ['$scope', 'articles', '$routeParams', '$htt
       $scope.$apply(function() {
           $scope.comments.push(data);
           getComment();
+          $location.url("http://chinnnoo.xyz/articles/" + $routeParams.id);
       });
     });
   };
