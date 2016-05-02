@@ -55,6 +55,7 @@ app.controller('ArticleController', ['$scope', 'articles', '$routeParams', '$htt
 
       $scope.$apply(function() {
           $scope.comments.push(data);
+          getComment();
       });
     });
   };

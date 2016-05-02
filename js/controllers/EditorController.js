@@ -13,10 +13,10 @@ app.controller('EditorController', ['$scope', '$http', 'userinfo', '$location',
          })
           .success(function(data) {
             console.log("sent");
-            $location.path("#/");
+            $location.url("http://chinnnoo.xyz/#/");
+            console.log("redirect to http://chinnnoo.xyz/#/");
           });
         };
-
 
         $scope.tinymceOptions = {
             onChange: function(e) {
