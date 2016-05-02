@@ -55,7 +55,7 @@ module.exports = function(app, passport) {
                     console.log('signup' + q);
                     DbEditor.rawQuery(q, function(err, rows){
                       if(!err){
-                        res.redirect('/', { username : user.username });
+                        res.redirect('/#/login');
                         incrementUserId();
                       }
                     });
@@ -73,14 +73,15 @@ module.exports = function(app, passport) {
 
     //POST signin
     app.post('/signin', function(req, res, next) {
+        console.log(req.body);
         passport.authenticate('local', {
-                successRedirect: '/',
-                failureRedirect: '/signin'
+                successRedirect: '/#/',
+                failureRedirect: '/#/login'
             },
             function(err, user, info) {
                 if (err) {
                     return; //render web with error message
-                }
+                  }
 
                 if (!user) {
                     return; //render web with info message
@@ -90,8 +91,8 @@ module.exports = function(app, passport) {
                     if (err) {
                         return; //render web with error message
                     } else {
-
-                        return res.redirect('/');
+                        console.log('login succuss' + user.username);
+                        res.redirect('/');
                     }
                 });
             })(req, res, next);
@@ -99,38 +100,17 @@ module.exports = function(app, passport) {
 
     app.get('/signout', function(req, res, next) {
         if (!req.isAuthenticated()) {
-            res.redirect('/signin');
+            res.redirect('/#/login');
         } else {
             req.logout();
-            res.redirect('/signin');
+            res.redirect('/#/login');
         }
     });
 
-    app.get('/angular_module/:name', function(req, res, next) {
-        var moduleName = req.params.name;
-        res.sendFile(root + '/angular_module/' + moduleName);
 
+    app.get('*', function(req, res, next) {
+      res.sendFile(root + '/index.html');
     });
-
-    app.get('/css/:name', function(req, res, next) {
-        var cssName = req.params.name;
-        res.sendFile(root + '/css/' + cssName);
-    });
-
-    app.get('/js/:name', function(req, res, next){
-        var jsName = req.params.name;
-        res.sendFile(root + '/js/' + jsName);
-    });
-
-    app.get('/article', function(req, res, next) {
-        res.render('test.ejs');
-    });
-
-    app.get('/images/:name' , function(req, res, next) {
-        res.sendFile(root + '/images/' + req.params.name);
-    });
-
-
 
 
 };

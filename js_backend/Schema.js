@@ -42,18 +42,10 @@ var comment = {
 };
 
 var tag = {
-  table: 'tbl_tags',
+  table: 'tbl_follows',
   column: {
     tagName: 'tagName',
     aid: 'articleId'
-  }
-};
-
-var articleImage = {
-  table: 'tbl_articlesImage',
-  column: {
-    articleId: 'articleId',
-    url: 'image'
   }
 };
 
@@ -62,6 +54,5 @@ module.exports = {
   Article: article,
   Love: love,
   Comment: comment,
-  Tag: tag,
-  ArticleImage: articleImage
+  Tag: tag
 };

@@ -25,11 +25,6 @@ CREATE TABLE tbl_loves(
   PRIMARY KEY(articleId, uid)
 );
 
-CREATE TABLE tbl_articlesImage(
-  articleId int primary key,
-  image text not null,
-  FOREIGN KEY(articleId) REFERENCES tbl_articles(articleId)
-);
 
 CREATE TABLE tbl_comments(
   commentId int primary key ,
@@ -42,9 +37,10 @@ CREATE TABLE tbl_comments(
   check (commentId>=1000000000)
 );
 
-CREATE TABLE tbl_tags(
-  tagName varchar(255) not null,
-  articleId int not null,
-  FOREIGN KEY(articleId) REFERENCES tbl_articles(articleId),
-  PRIMARY KEY (tagName, articleId);
+CREATE TABLE tbl_follows(
+  uid int not null,
+  following int not null,
+  FOREIGN KEY(uid) REFERENCES tbl_users(uid),
+  FOREIGN KEY(following) REFERENCES tbl_users(uid),
+  PRIMARY KEY(uid, following)
 );

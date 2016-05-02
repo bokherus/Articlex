@@ -11,8 +11,10 @@ var DbEditor = require('./js_backend/DbManipulator');
 var Schema = require('./js_backend/Schema');
 
 var app = express();
+var cors = require('cors');
 
 passport.use(new LocalStrategy(function(username, password, done) {
+  console.log("passport" + username);
   DbEditor.query(Schema.User.table, ['*'], [Schema.User.column.username+'='], ['\''+username+'\''], function(err, rows){
     console.log(err);
     console.log(rows);
@@ -44,6 +46,7 @@ passport.deserializeUser(function(username, done) {
   });
 });
 
+app.use(cors());
 app.set('view engine', 'ejs');
 app.use(cookieParser());
 app.use(bodyParser.json());
@@ -53,15 +56,19 @@ app.use(bodyParser.urlencoded({
 app.use(session({secret: 'secret strategic abcde code'}));
 app.use(passport.initialize());
 app.use(passport.session());
-app.use(function(req, res, next){
-    res.header('Access-Control-Allow-Origin', '*');
-    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
-    res.header('Access-Control-Allow-Headers', 'Content-Type');
-    next();
-});
 
-require('./routes')(app, passport);
+
+app.use('/bower_components', express.static(path.join(__dirname, './bower_components')));
+app.use('/js', express.static(path.join(__dirname, './js')));
+app.use('/css', express.static(path.join(__dirname, './css')));
+app.use('/images', express.static(path.join(__dirname, './images')));
+app.use('/node_modules', express.static(path.join(__dirname, './node_modules')));
+app.use('/views', express.static(path.join(__dirname, './views')));
+
+
 require('./routes-api')(app, passport);
+require('./routes')(app, passport);
+
 
 
 

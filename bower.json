@@ -1,0 +1,21 @@
+{
+  "name": "articlex",
+  "description": "A place for anyone who wants to publish their article",
+  "main": "server.js",
+  "authors": [
+    "Thongrapee <kulaspa@gmail.com>"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/bokherus/Articlex",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "tinymce": "tinymce-dist#^4.3.11",
+    "angular-ui-tinymce": "^0.0.15"
+  }
+}

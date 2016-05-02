@@ -1,0 +1,61 @@
+<div class="article">
+
+    <div class="author-info">
+        <div class="row">
+            <div class="col-xs-2 col-sm-2 col-md-1">
+                <img class="user-pic" ng-src="{{ userImage }}">
+            </div>
+            <div class="col-xs-8 col-sm-8 col-md-9">
+                <div class="row">
+                    <a class="article-listitem-author" href="#/">{{ detail.author }}</a>
+                    <p class="article-listitem-pubdate">{{ detail.createTime | relativeDate }}</p>
+                </div>
+            </div>
+            <div class="col-xs-2 col-sm-2 col-md-2">
+              <button ng-class="class" ng-click="follow()">{{ followButton }}</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <img class="img-responsive article-image" ng-src="{{ detail.url }}">
+    </div>
+
+    <div class="content-layout">
+        <h3 class="article-title">{{ detail.title }}</h3>
+        <div class="article-content" ng-bind-html="content"></div>
+    </div>
+
+    <div class="comment-section">
+        <h4>Responses</h4>
+        <form ng-submit="submitComment()">
+            <input id="comment-input" placeholder="Add a response" ng-model="formData.comment"></input>
+            <button id="submit-btn" class="submit">Submit</button>
+        </form>
+
+        <div class="comment-item panel panel-default" ng-repeat="comment in comments">
+            <div class="row">
+                <div class="col-xs-2 col-sm-2 col-md-1">
+                    <img class="user-pic" ng-src="http://7108-presscdn-0-78.pagely.netdna-cdn.com/wp-content/uploads/2013/09/person-to-person-business.jpg">
+                </div>
+                <div class="col-xs-10 col-sm-10 col-md-11">
+                    <div class="row">
+                        <a class="article-listitem-author" href="#/">{{ comment.firstName }}</a>
+                        <p class="article-listitem-pubdate">{{ comment.createTime | relativeDate }}</p>
+                    </div>
+                </div>
+            </div>
+            <p>{{ comment.comment }}</p>
+            <!-- <div class="row article-listitem-panel">
+                <div class="col-md-10">
+                    <button class="button-love">
+                        <i class="fa fa-heart-o fa-lg" aria-hidden="true"></i>
+                    </button>
+                    <button class="button-love-text"></button>
+                </div>
+            </div> -->
+        </div>
+    </div>
+
+
+</div>

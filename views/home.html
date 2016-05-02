@@ -1,0 +1,40 @@
+<div class="main">
+    <div class="container">
+        <ul class="nav nav-pills col-md-8 col-sm-8">
+            <li><a href="#/">All</a></li>
+            <li><a href="#/following">Following</a></li>
+        </ul>
+    </div>
+
+    <div class="container article-feed" ng-repeat="article in articles">
+        <div class="article-listitem panel panel-default col-md-8 col-sm-8">
+            <!-- SHOW ARTICLE PUBLISHED DATE/TIME -->
+            <div class="row">
+                <div class="col-xs-2 col-sm-2 col-md-1">
+                    <img class="user-pic" ng-src="{{ userImage }}">
+                </div>
+                <div class="col-xs-10 col-sm-10 col-md-11">
+                    <div class="row">
+                        <a class="article-listitem-author" href="#/">{{ article.author }}</a>
+                        <p class="article-listitem-pubdate">{{ article.createTime | relativeDate }}</p>
+                    </div>
+                </div>
+            </div>
+
+            <a href="#/articles/{{$index}}">
+              <!-- <div class="article-listitem-image" ng-style="{'background-image':'url({{article.url}})'}" style="height: 200px"></div> -->
+                <h2 class="article-listitem-title">{{ article.title }}</h2>
+                <p class="article-listitem-content" ng-bind-html="getTruncatedContent(article)"></p>
+            </a>
+            <div class="row article-listitem-panel">
+                <div class="col-md-10">
+                    <button class="button-love">
+                        <i ng-class="article.class" aria-hidden="true" ng-click="love($index)"></i>
+                        <!-- <i class="fa fa-heart fa-lg" aria-hidden="true" ng-click="love()"></i> -->
+                    </button>
+                    <button class="button-love-text">{{ article.loveCount }}</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

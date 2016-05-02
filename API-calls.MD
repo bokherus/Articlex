@@ -23,6 +23,6 @@
 ## GET /api/comment/aid/:articleId
  * get comments of an article.
 
-## POST /api/comment/aid/:articleId/ccommentorId/:commentorId
+## POST /api/comment/aid/:articleId/commentorId/:commentorId
  * post comment to an article.
  * this call needs to put tag "comment" in the body.
