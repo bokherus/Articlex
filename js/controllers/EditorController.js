@@ -3,13 +3,11 @@ app.controller('EditorController', ['$scope', '$http', 'userinfo', '$location',
         $scope.title = "";
         $scope.content = "";
 
-        var uid = userinfo.getInfo.uid;
-
         $scope.formData = {};
         $scope.submitForm = function() {
         $http({
           method  : 'POST',
-          url     : 'http://chinnnoo.xyz:8889/api/article/uid/' + uid,
+          url     : 'http://chinnnoo.xyz:8889/api/article/uid/' + userinfo.getInfo().uid,
           data    : $.param($scope.formData),
           headers : {'Content-Type': 'application/x-www-form-urlencoded'}
          })

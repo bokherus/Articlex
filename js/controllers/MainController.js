@@ -47,7 +47,7 @@ app.controller('MainController',[
   var postLove = function(articleId, i) {
     $http({
       method  : 'POST',
-      url     : 'http://chinnnoo.xyz:8889/api/loves/aid/' + articleId + '/uid/' + userinfo.getInfo.uid,
+      url     : 'http://chinnnoo.xyz:8889/api/loves/aid/' + articleId + '/uid/' + userinfo.getInfo().uid,
       headers : {'Content-Type': 'application/x-www-form-urlencoded'}
     })
     .success(function(data) {
@@ -58,7 +58,7 @@ app.controller('MainController',[
   var deleteLove = function(articleId, i) {
     $http({
       method  : 'DELETE',
-      url     : 'http://chinnnoo.xyz:8889/api/loves/aid/' + articleId + '/uid/' + userinfo.getInfo.uid,
+      url     : 'http://chinnnoo.xyz:8889/api/loves/aid/' + articleId + '/uid/' + userinfo.getInfo().uid,
       headers : {'Content-Type': 'application/x-www-form-urlencoded'}
     })
     .success(function(data) {

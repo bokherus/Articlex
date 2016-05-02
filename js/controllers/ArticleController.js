@@ -12,8 +12,8 @@ app.controller('ArticleController', ['$scope', 'articles', '$routeParams', '$htt
     }
     console.log($scope.img);
     getComment();
-    $scope.postCommentUrl = 'http://chinnnoo.xyz:8889/api/comment/aid/' + $scope.detail.articleId + '/commentorId/' + userinfo.getInfo.uid;
-    $scope.postFollowUrl = 'http://chinnnoo.xyz:8889/api/follow/' + userinfo.getInfo.uid +'/following/' + $scope.detail.authorId;
+    $scope.postCommentUrl = 'http://chinnnoo.xyz:8889/api/comment/aid/' + $scope.detail.articleId + '/commentorId/' + userinfo.getInfo().uid;
+    $scope.postFollowUrl = 'http://chinnnoo.xyz:8889/api/follow/' + userinfo.getInfo().uid +'/following/' + $scope.detail.authorId;
   });
 
   $scope.formData = {};
